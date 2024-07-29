@@ -91,9 +91,9 @@ print(c) // 输出：i
 /*
  - BidirectionalCollection协议
     - String扩展遵守StringProtocol协议，而StringProtocol协议遵守BidirectionalCollection协议，
-      BidirectionalCollectionx协议有startIndex、endIndex属性，index方法
+      BidirectionalCollection协议有startIndex、endIndex属性，index方法
     - String和Array都遵守了这个协议。只不过Array指定了startIndex、endIndex等属性是Int类型，
-      String相关属性时String.Index类型（内部实现原理是BidirectionalCollection协议的关联类型）
+      String相关属性是String.Index类型（内部实现原理是BidirectionalCollection协议的关联类型）
  - RangeReplaceableCollection协议
     - RangeReplaceableCollection协议中有append、insert、remove方法，String、Array都遵守了这个协议
     - Dictionary、Set也有实现上述协议中声明的一些方法，只是并没有遵守上述协议
