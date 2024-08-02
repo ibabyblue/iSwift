@@ -30,7 +30,7 @@ print(fArr) // 输出：[2, 4]
 // var fArr = arr.filter { $0 % 2 == 0 }
 // print(fArr) // 输出：[2, 4]
 
-//MARK: reduce（累计）
+//MARK: reduce（归约、缩减）
 /*
  - 第一个参数是初始值
  - 第二个参数是闭包表达式
@@ -103,7 +103,7 @@ print("end---")
  mapped 6
  end---
  */
-//使用数组result前，数组已经被map遍历完成。有没有可能用到result时再去执行map？可以的，使用lazy
+//使用数组lResult前，数组已经被map遍历完成。有没有可能用到lResult时再去执行map？可以的，使用lazy
 let lResult = arr.lazy.map {
     (i: Int) -> Int in
     print("mapping \(i)")
@@ -155,10 +155,11 @@ print(num6 as Any) // 输出：Optional(Optional(20))
 var num7 = num5.flatMap { Optional.some($0 * 2) }
 print(num7 as Any) // 输出：Optional(20)
 
-//应用场景一:下面代码中n2和n3是等价的
+//应用场景一:下面代码中n2和n3是等价的（可选类型）
 var n1: Int? = 10
 var n2 = (n1 != nil) ? (n1! + 10) : nil
 var n3 = n1.map { $0 + 10 }
+print(n2 as Any,n3 as Any)
 
 //应用场景二:下面代码中date1和date2是等价的
 var fmt = DateFormatter()
@@ -210,8 +211,8 @@ var s1 = json != nil ? Student(json!) : nil
 var s2 = json.flatMap(Student.init)
 
 /*
- Person.init 是对 Person 结构体初始化方法的引用，类型是 ([String: Any]) -> Person?
- 等同于 Person(["name" : "idbeny", "age" : 18])
+ Student.init 是对 Student 结构体初始化方法的引用，类型是 ([String: Any]) -> Student?
+ 等同于 Student(["name" : "idbeny", "age" : 18])
  使用 flatMap 方法可以简化可选值的处理和初始化过程
  */
 
