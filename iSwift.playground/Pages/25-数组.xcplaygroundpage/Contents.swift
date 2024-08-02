@@ -35,7 +35,7 @@ print(fArr) // 输出：[2, 4]
  - 第一个参数是初始值
  - 第二个参数是闭包表达式
     - 第一个参数是闭包返回值，首次传入的参数值是reduce函数的第一个参数即初始值
-    - 第二个参数是数组元素，函数返回值作为下一次遍历时闭包表达式的第一个参数），数组遍历完成后把结果返回
+    - 第二个参数是数组元素，函数返回值作为下一次遍历时闭包表达式的第一个参数，数组遍历完成后把结果返回
  */
 var rArr = arr.reduce(0) { (result, element) -> Int in
     return result + element
@@ -192,7 +192,7 @@ func p2(_ name: String) -> Person? {
     return items.firstIndex { $0.name == name }.map { items[$0] }
 }
 
-//应用场景五:字典转模型，下面示例中p1和p2的代码是等价的
+//应用场景五:字典转模型，下面示例中s1和s2的代码是等价的
 struct Student {
     var name: String
     var age: Int

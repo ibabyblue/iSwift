@@ -154,7 +154,7 @@ extension Person : BBCompatible {
 
 extension BB where T : Person {
     func run() {
-        
+        print("run()")
     }
 }
 

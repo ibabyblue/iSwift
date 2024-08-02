@@ -279,7 +279,7 @@ extension Car {
  1.为什么Swift暴露给OC的类最终要继承自NSObject？
     - 因为这个类最终是要给OC使用的，OC的所有类最终都继承自NSObject
  
- 2.p.run()底层是怎么调用的（走OC的runtime还是Swift的虚表）？反过来，OC调用Swift底层又是如何调用的？
+ 2.a.run()底层是怎么调用的（走OC的runtime还是Swift的虚表）？反过来，OC调用Swift底层又是如何调用的？
     - OC调用Swift，Swift代码由于生成了OC代码，所以还是走runtime流程的，也就意味着必然有isa指针，而isa来自NSObject
     - Swift调用OC，最终还是走runtime。就算被 @objcMembers 修饰，Swift代码之间的调用还是虚表
     - 如果Swift中的类成员（函数）必须使用OC的runtime实现时，可以使用 dynamic 关键字，实现动态性
