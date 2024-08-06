@@ -102,7 +102,7 @@ score = .grade("A")
 
 /*
  可以提取关联值 用 "let / var" 修饰
- 通过值绑定,生成的 "局部变量"  就与 "关联值" 相连接
+ 通过值绑定,生成的 "局部变量" 就与 "关联值" 相连接
  */
 switch score {
 case .points(let i):

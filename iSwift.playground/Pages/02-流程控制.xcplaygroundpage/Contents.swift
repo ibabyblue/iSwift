@@ -23,7 +23,7 @@ while (num > 0) {
 }
 //输出：5 4 3 2 1
 
-//Swift2.2开始，废弃了自增（++）、自减（--）运算符
+//Swift3.0开始，废弃了自增（++）、自减（--）运算符
 var rNum = -1
 repeat {
     print("rNum is \(rNum)")
