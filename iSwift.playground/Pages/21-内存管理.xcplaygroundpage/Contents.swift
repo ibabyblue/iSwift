@@ -80,7 +80,7 @@ foo1()
 //Dog.deinit
 //2
 //Lover.deinit
-//注解：dog是弱引用，所以会立即销毁并自定设置为nil，可以看出属性观察器 Dog.deinit 之后在并未触发
+//注解：dog是弱引用，所以会立即销毁并自动设置为nil，可以看出属性观察器 Dog.deinit 之后在并未触发
 
 //3.无主引用（unowned reference）
 //无主引用不会产生强引用，实例销毁后仍然存储着实例的内存地址（类似OC中的unsafe_unretained）
@@ -375,7 +375,7 @@ test1()
 //}
 /*
  fn是逃逸闭包。DispatchQueue.global().async也是一个逃逸闭包。它用到了实例成员（属性、方法），编译器会强制要求明确写出self。这里不会产生循环引用，因为仅仅是异步方法对Person做了强引用，而Person没有对异步方法做强引用
- 如果Person对象被释放后不需要再调用fn函数，则需要使用弱引用：
+ 如果Person对象被释放后不需要再调用fn函数（及时释放），则需要使用弱引用：
  DispatchQueue.global().async {
      [weak weakself = self] in
      weakself?.fn()
@@ -403,13 +403,14 @@ func test(value: inout Int) {
     }
 }
 
-//other2()报错：Escaping closure captures 'inout' parameter 'value'
+//!!!: other2()报错：Escaping closure captures 'inout' parameter 'value'
 
+//MARK: - 内存泄漏
 //内存泄漏：场景一
 /*此计时器将阻止控制器释放，因为：
 *1、定时器重复执行
 *2、self在闭包中引用，而没有使用[weak self]
-*如果这两个条件中的任何一个是错误的，它都不会引起问题*/
+*如果这两个条件的任何一个不满足，都不会引起内存泄漏问题*/
 //func leakyTimer() {
 //    let timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
 //        let currentColor = self.view.backgroundColor
@@ -420,7 +421,7 @@ func test(value: inout Int) {
 //}
 
 //内存泄漏：场景二
-/*尽管使用了[weak self]，这个嵌套的闭包还是会泄漏，因为与DispatchWorkItem关联的转义闭包使用其嵌套闭包的[weak self]关键字创建对“self”的强引用。因此，我们需要将[弱自我]提升一级，到最外层的封闭处(DispatchWorkItem {[weak self] in xxxx })，以避免泄漏*/
+/*尽管使用了[weak self]，这个嵌套的闭包还是会泄漏，因为与DispatchWorkItem关联的转义闭包使用其嵌套闭包的[weak self]关键字创建对"self"的强引用。因此，我们需要将[weak self]提升一级，到最外层的封闭处(DispatchWorkItem {[weak self] in xxxx })，以避免泄漏*/
 //func leakyNestedClosure() {
 //    let workItem = DispatchWorkItem {
 //        UIView.animate(withDuration: 1.0) { [weak self] in

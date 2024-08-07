@@ -319,7 +319,7 @@ class Test {
 //let fn2: (Int) -> () = Person.run
 //fn2(20) // 输出：static func run 20
 //
-//// 实例传给变量
+//// 实例传给变量：Person.run 方法引用（这里编译器推导出的方法为实例方法）
 //let fn3: (Person) -> ((Int) -> ()) = Person.run
 //fn3(Person(age: 18))(30) // 输出：func run 18 30
 
