@@ -10,7 +10,7 @@ var greeting = "Hello, Pointer"
  • Swift中的指针类型：
  - UnsafePointer<Pointee> 类似于 const Pointee * (只读的泛型指针)
  - UnsafeMutablePointer<Pointee> 类似于 Pointee * (可读可写的泛型指针)
- - UnsafeBufferPointer<Pointee> 类似于 const Pointee *（只读的内存缓冲区指针）集合指针类型
+ - UnsafeBufferPointer<Pointee> 类似于 const Pointee * (只读的内存缓冲区指针) 集合指针类型
  - UnsafeMutableBufferPointer 类似于 Pointee * (可读可写的内存缓冲区指针) 集合指针类型
  - UnsafeRawPointer 类似于 const void * (只读的原始类型指针)
  - UnsafeMutableRawPointer 类似于 void * (可读可写的原始类型指针)
@@ -77,9 +77,9 @@ var personPtr = withUnsafePointer(to: &person) { $0 }
 print(personPtr.pointee.age) // 输出：10
 
 /*
- 思考：ptr存储的是什么？存储的是变量person的地址值还是堆空间Person对象的地址值？
- - person变量的地址值，其实从withUnsafePointer的入参和返回值也能反映出ptr存储的是person变量的地址值，
- 因为传入什么，返回值就是什么。ptr本质就是person
+ 思考：personPtr存储的是什么？存储的是变量person的地址值还是堆空间Person对象的地址值？
+ - person变量的地址值，其实从withUnsafePointer的入参和返回值也能反映出personPtr存储的是person变量的地址值，
+ 因为传入什么，返回值就是什么。personPtr本质就是person
  */
 
 var ptr1 = withUnsafePointer(to: &person) { UnsafeRawPointer($0) }
@@ -103,7 +103,7 @@ var mPtr = malloc(16)
 mPtr?.storeBytes(of: 10, as: Int.self)
 // 指针后8个字节填充数据（Int类型数字20）
 // toByteOffset: 字节偏移量（偏移8代表是因为Int占用8个字节）
-mPtr?.storeBytes(of: 10, toByteOffset: 8, as: Int.self)
+mPtr?.storeBytes(of: 20, toByteOffset: 8, as: Int.self)
 
 // 取数据
 // 取出指针指向的内存前8个字节的数据
@@ -291,8 +291,8 @@ var address = unsafeBitCast(p, to: Int.self)
 var aPtr = UnsafeRawPointer(bitPattern: address)
 
 /*
- 注意：原始指针和泛型指针 ptr + 8 是有区别的
- 原始指针 ptr + 8 指的是跳过 8 个字节，泛型指针指的是跳过 8*类型占用字节 个字节
+ 注意：原始指针和泛型指针 (ptr + 8) 是有区别的
+ 原始指针 (ptr + 8) 指的是跳过 (8) 个字节，泛型指针指的是跳过 (8*类型占用字节) 个字节
  */
 
 //: [Next](@next)
