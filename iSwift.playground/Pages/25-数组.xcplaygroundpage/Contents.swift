@@ -168,7 +168,7 @@ var str: String? = "2008-08-08"
 var date1 = str != nil ? fmt.date(from: str!) : nil
 var date2 = str.flatMap(fmt.date)
 
-//应用场景三:下面代码中str1和str2是等价的
+//应用场景三:下面代码中str1和str2是等价的 (String类型)
 var score: Int? = 98
 var str1 = score != nil ? "Score is \(score ?? 0)" : "No score"
 var str2 = score.map { "Score is \($0)" } ?? "No score"
@@ -185,6 +185,7 @@ var items = [
     Person(name: "kate", age: 22)
 ]
 func p1(_ name: String) -> Person? {
+    //从数组中获取第一个符合条件的元素索引
     let index = items.firstIndex { $0.name == name }
     return index != nil ? items[index!] : nil
 }
