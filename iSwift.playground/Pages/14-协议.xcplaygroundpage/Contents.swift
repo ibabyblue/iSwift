@@ -146,6 +146,7 @@ class Size : Paintable {
 /*
  - 协议中还可以定义初始化器init
     - 非final类实现时必须加上required
+    - 值类型（结构体、枚举）实现时则不需要required
  
  - 如果从协议实现的初始化器，刚好是重写了父类的指定初始化器
     - 那么这个初始化必须同时加required、override

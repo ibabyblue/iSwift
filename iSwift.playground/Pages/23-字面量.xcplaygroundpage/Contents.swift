@@ -18,7 +18,7 @@ var name = "Jack"
  - public typealias StringLiteralType = String
  */
 
-//通过 typealias 修改字面量默类型：
+//通过 typealias 修改字面量默认类型：
 public typealias FloatLiteralType = Float
 public typealias IntegerLiteralType = UInt8
 var width = 10 // UInt8类型
@@ -229,7 +229,7 @@ default:
     print("default")
 }
 
-//示例代码二：（字典）
+//示例代码三：（字典）
 var scores = ["jack" : 98, "rose" : 100, "kate" : 86]
 for (name, score) in scores {
     print(name, score)
@@ -318,27 +318,6 @@ check(nil)
 //MARK: 类型转换模式（Type-Casting Pattern）
 //is 和 as 的使用
 //示例代码一：
-let aNum: Any = 1
-switch aNum {
-case is Int:
-    print("is Int", aNum)
-default:
-    break
-}
-// 输出：is Int 6
-//case is Int仅仅是判断num是否为Int类型，编译器不会自动强转，依然认为num是Any类型
-
-//如果需要强转并且判断类型，可以使用as：
-//switch aNum {
-//case let n as Int:
-//    print("as Int", n)
-//default:
-//    break
-//}
-//// 输出：as Int 6
-//此时的n是Int类型，但是aNum依然是Any类型。如果aNum不是Int类型就会跳过当前case，匹配下一个case
-
-//示例代码二：
 class Animal {
     func eat() {
         print(type(of: self), "eat")
@@ -395,7 +374,7 @@ default:
 }
 // 输出：(1, 2) is near the origin.
 
-//在Swift中，一些复杂switch匹配会用到~=运算符，但并不是所有的switch都是用到该运算符
+//在Swift中，一些复杂switch匹配会用到 ~= 表达式模式运算符，但并不是所有的switch都是用到该运算符
 //1.自定义表达式模式
 struct Stu {
     var score = 0, name = ""
@@ -429,7 +408,7 @@ default:
 }
 // 输出：[60, 79]
 
-//sStu是怎么和Int、Rang进行匹配的呢？重写~=运算符
+//sStu是怎么和Int、Rang进行匹配的呢？重写 ~= 表达式模式运算符
 //基本上是固定写法（返回值必须是Bool）：
 // pattern: case后面的类型
 // value: switch后面的类型
