@@ -313,7 +313,7 @@ d.run3() // 输出：Dog run3
 
 //MARK: - dynamic
 //被 @objc、dynamic修饰的内容会具有动态性，比如调用方法会走runtime那一套流程
-//Swift5中不推荐单独使用dynamic，不会隐式添加 @Ojbc，会报错，推荐显示添加形式： @objc dynamic
+//Swift5中不推荐单独使用dynamic，不会隐式添加 @ojbc，会报错，推荐显示添加形式： @objc dynamic
 class Cat: NSObject {
     @objc dynamic func test1() { }
     func test2() { }

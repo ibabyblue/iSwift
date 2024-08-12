@@ -207,7 +207,7 @@ struct Student {
         self.age = age
     }
 }
-var json: Dictionary? = ["name" : "idbeny", "age" : 18]
+var json: Dictionary? = ["name" : "beny", "age" : 18]
 var s1 = json != nil ? Student(json!) : nil
 var s2 = json.flatMap(Student.init)
 
