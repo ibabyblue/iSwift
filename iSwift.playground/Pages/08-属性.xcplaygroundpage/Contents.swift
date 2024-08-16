@@ -286,12 +286,18 @@ final public class FileManager {
 }
 
 //MARK: - UserDefaults
-enum UDKey {
-    static let k1 = "token"
+//!!!: synchronize()方法Swift中已经废弃
+//enum UDKey {
+//    static let k1 = "token"
+//}
+//let ud = UserDefaults.standard
+//ud.set("xxxxxx", forKey: UDKey.k1)
+//let tk = ud.string(forKey: UDKey.k1)
+//print(tk ?? "")
+
+//获取包名
+if let bundleIdentifier = Bundle.main.bundleIdentifier {
+    print("Bundle Identifier: \(bundleIdentifier)")
 }
-let ud = UserDefaults.standard
-ud.set("xxxxxx", forKey: UDKey.k1)
-let tk = ud.string(forKey: UDKey.k1)
-print(tk ?? "")
 
 //: [Next](@next)
