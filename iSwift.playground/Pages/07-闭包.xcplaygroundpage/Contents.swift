@@ -118,7 +118,7 @@ exec(v1: 10, v2: 20, fn: +)
 //如果闭包作为函数的最后一个实参，使用尾随闭包可以增强可读性
 // - 尾随闭包为一个被书写在函数调用括号外面的闭包表达式
 //fn即为尾随闭包
-func action(v1: Int, v2: Int, fn:(Int, Int) -> Int) -> Int {
+func action(v1: Int, v2: Int, fn: (Int, Int) -> Int) -> Int {
     fn(v1, v2)
 }
 

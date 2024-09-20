@@ -95,7 +95,7 @@ func vSum(_ numbers: Int...) -> Int {
     return total
 }
 
-vSum(10, 20 ,30)
+vSum(10, 20, 30)
 
 //MARK: - 输入输出参数
 /*
