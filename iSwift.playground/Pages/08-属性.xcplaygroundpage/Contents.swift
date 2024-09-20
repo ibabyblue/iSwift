@@ -57,7 +57,15 @@ var greeting = "Hello, property"
  • 可用于全局属性、局部属性
  */
 
+struct Point_t {
+    var x: Int = 0
+    var y: Int = 0
+}
+
 struct Circle {
+    //存储属性 - let
+    let center: Point_t
+    
     //存储属性
     var area: Double
     
@@ -99,7 +107,7 @@ struct Circle {
     }
 }
 
-var circle: Circle = Circle(area: 20, radius:6)
+var circle: Circle = Circle(center: Point_t(), area: 20, radius: 6)
 circle.diameter
 circle.radius = 2
 
@@ -234,7 +242,7 @@ s.show()
     - 因为类型没有像实例那样的init初始化器来初始化存储属性
  • 存储类型属性默认就是lazy，会在第一次使用的时候才初始化
     - 就算被多个线程同时访问，保证只会初始化一次
-    - 存储类型属性可以是let
+    - 存储类型属性使用let修饰时必须保证设定初始值，因为类型没有像实例那样的初始化器来初始化存储属性
  
  • 枚举类型也可以定义类型属性（存储类型属性、计算类型属性）
  
