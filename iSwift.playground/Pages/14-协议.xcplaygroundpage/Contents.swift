@@ -416,7 +416,7 @@ print(create([GoldenMonkey.self, Macaque.self, SpiderMonkey.self]))
 
 //MARK: - Self
 /*
- • 代表当前类型
+ • 代表当前类型(当前类型的占位符)
  • 一般用作返回值类型，限定返回值跟方法调用者必须是同一类型（也可以作为参数类型）
  */
 //1、代表当前类型
@@ -436,6 +436,7 @@ print(create([GoldenMonkey.self, Macaque.self, SpiderMonkey.self]))
 //}
 //class Person : Runnable {
 //    required init() {}
+//    //这里的Self，可以理解为返回Person类型的实例，类似OC中：- (Person *)test { return [[Person alloc] init]; }
 //    func test() -> Self { type(of: self).init() }
 //}
 //class Student : Person {}
