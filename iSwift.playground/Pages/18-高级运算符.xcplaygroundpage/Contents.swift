@@ -208,10 +208,10 @@ struct Student : Comparable {
         self.score = score
     }
     static func < (lhs: Student, rhs: Student) -> Bool {
-        (lhs.score < rhs.score) || (lhs.score == rhs.score && lhs.age > rhs.age)
+        (lhs.score < rhs.score) || (lhs.score == rhs.score && lhs.age < rhs.age)
     }
     static func > (lhs: Student, rhs: Student) -> Bool {
-        (lhs.score > rhs.score) || (lhs.score == rhs.score && lhs.age < rhs.age)
+        (lhs.score > rhs.score) || (lhs.score == rhs.score && lhs.age > rhs.age)
     }
     static func <= (lhs: Student, rhs: Student) -> Bool {
         !(lhs > rhs)
