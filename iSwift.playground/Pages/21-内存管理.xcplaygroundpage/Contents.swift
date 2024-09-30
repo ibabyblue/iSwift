@@ -39,7 +39,7 @@ print("2")
 /*
  弱引用变量必须为可选类型的var，因实例销毁后，ARC会自动将弱引用设置为nil
  思考：为什么必须是var?变量，为什么必须可选？
-    - 因为之后可选类型才能设置为nil，只有var才能改变内存
+    - 因为只有可选类型才能设置为nil，只有var才能改变内存
  */
 //示例代码
 weak var p: People? = People()
@@ -80,7 +80,7 @@ foo1()
 //Dog.deinit
 //2
 //Lover.deinit
-//注解：dog是弱引用，所以会立即销毁并自动设置为nil，可以看出属性观察器 Dog.deinit 之后在并未触发
+//注解：dog是弱引用，所以会立即销毁并自动设置为nil，可以看出属性观察器 Dog.deinit 之后并未触发
 
 //3.无主引用（unowned reference）
 //无主引用不会产生强引用，实例销毁后仍然存储着实例的内存地址（类似OC中的unsafe_unretained）
