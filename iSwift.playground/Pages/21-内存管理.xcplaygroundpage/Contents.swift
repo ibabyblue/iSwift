@@ -398,9 +398,10 @@ func test(value: inout Int) {
         value += 1
     }
     
-    other2 {
-        value -= 1
-    }
+    //报错:Escaping closure captures 'inout' parameter 'value'
+//    other2 {
+//        value -= 1
+//    }
 }
 
 //!!!: other2()报错：Escaping closure captures 'inout' parameter 'value'
