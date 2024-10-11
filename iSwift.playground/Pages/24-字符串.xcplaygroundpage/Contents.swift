@@ -52,6 +52,9 @@ mStr.removeAll() { $0 == "6" } //hi_2_3_8884
 let range = mStr.index(mStr.endIndex, offsetBy: -4)..<mStr.index(before: mStr.endIndex)
 mStr.removeSubrange(range) //hi_2_3_4
 
+//打印第一个字符与第二个字符的间距数值
+print(mStr.distance(from: mStr.startIndex, to: mStr.index(after: mStr.startIndex)))
+
 //MARK: - Substring
 /*
  - Substring和它的base，共享字符串数据

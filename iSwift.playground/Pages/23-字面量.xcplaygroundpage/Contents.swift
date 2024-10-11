@@ -454,7 +454,7 @@ case hasPrefix("i"), hasSuffix("e"):
 default:
     break
 }
-// 输出：以i开头 或 以y结尾
+// 输出：以i开头 或 以e结尾
 
 //示例代码五：
 func isEven(_ i: Int) -> Bool {
