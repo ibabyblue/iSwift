@@ -161,7 +161,7 @@ var n2 = (n1 != nil) ? (n1! + 10) : nil
 var n3 = n1.map { $0 + 10 }
 print(n2 as Any,n3 as Any)
 
-//应用场景二:下面代码中date1和date2是等价的
+//应用场景二:下面代码中date1和date2是等价的（可选类型）
 var fmt = DateFormatter()
 fmt.dateFormat = "yyyy-MM-dd"
 var str: String? = "2008-08-08"
@@ -213,7 +213,7 @@ var s2 = json.flatMap(Student.init)
 
 /*
  Student.init 是对 Student 结构体初始化方法的引用，类型是 ([String: Any]) -> Student?
- 等同于 Student(["name" : "idbeny", "age" : 18])
+ 等同于 Student(["name" : "beny", "age" : 18])
  使用 flatMap 方法可以简化可选值的处理和初始化过程
  */
 
