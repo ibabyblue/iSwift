@@ -128,7 +128,7 @@ p3 = Point(x: 4, y: 4)
 
 var s3 = Size(width: 3, height:3)
 s3 = Size(width: 4, height: 4)
-//s3变量只有一份内存占用（栈），堆空间则有两个Size的实例对象，s3中存储的实例对象地址由Size(width: 3, height:3) 变为 Size(width: 4, height: 4)
+//s3变量只有一份内存占用（栈），堆空间则有两个Size的实例对象，s3中存储的实例对象地址由Size(width: 3, height:3) 变为 Size(width: 4, height: 4)，Size(width: 3, height:3)则由ARC机制回收。
 
 //MARK: 值类型与引用类型的let
 let p4 = Point(x: 4, y: 4)

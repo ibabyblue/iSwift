@@ -179,7 +179,7 @@ inactiveQueue.async {
 //开始执行任务
 inactiveQueue.activate()
 
-//队列-自动释放池参数
+//队列-自动释放参数
 /*
  .inherit:
     - 这个选项是默认值，表示当前队列将继承调用者队列的 AutoreleaseFrequency 行为。

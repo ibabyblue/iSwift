@@ -67,7 +67,7 @@ if let first = Int("4"),let second = Int("42"), first < second && second < 100 {
     print("\(first) < \(second) < 100")
 }
 
-let str:[String] = ["10", "20", "a", "-10","30"]
+let str: [String] = ["10", "20", "a", "-10","30"]
 
 var idx = 0
 var sum = 0
