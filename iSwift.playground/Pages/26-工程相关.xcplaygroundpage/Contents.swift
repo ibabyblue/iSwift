@@ -470,4 +470,17 @@ struct Example {
 let e = Example(p1: "hi")
 print(e()) // show hi
 
+//MARK: - 使用Swift中保留关键字作为变量的方法
+/*
+ !!!: Swift不允许使用保留关键字作为标识符（变量名、常量名、方法名等）直接使用，需要使用保留关键字作为标识符，必须使用反引号将其包围。
+ */
+enum Foo {
+    case `default`
+    case other
+}
+
+//使用方法：
+let foo = Foo.`default`
+let bar = Foo.default
+
 //: [Next](@next)

@@ -153,23 +153,49 @@ let item2 = DispatchWorkItem {
     }
 }
 
-//自定义串行队列
+//队列-主队列
+let mainQueue = DispatchQueue.main
+mainQueue.async(execute: item1)
+
+//队列-全局队列
+let globalQueue = DispatchQueue.global()
+globalQueue.async(execute:item1)
+
+//队列-自定义串行队列
 let serialQueue = DispatchQueue(label: "Serial")
 serialQueue.async(execute: item1)
 serialQueue.async(execute: item2)
 
-//自定义并行队列
+//队列-自定义并行队列
 let concurrentQueue = DispatchQueue(label: "concurrent", attributes: .concurrent)
 concurrentQueue.async(execute: item1)
 concurrentQueue.async(execute: item2)
 
-//主队列
-let mainQueue = DispatchQueue.main
-mainQueue.async(execute: item1)
+//队列-非自动执行任务队列（默认：串行队列）
+let inactiveQueue = DispatchQueue(label: "inactive", qos: .default, attributes: .initiallyInactive ,autoreleaseFrequency: .inherit, target: nil)
+inactiveQueue.async {
+    print("thread -> \(Thread.current)")
+}
+//开始执行任务
+inactiveQueue.activate()
 
-//全局队列
-let globalQueue = DispatchQueue.global()
-globalQueue.async(execute:item1)
+//队列-自动释放池参数
+/*
+ .inherit:
+    - 这个选项是默认值，表示当前队列将继承调用者队列的 AutoreleaseFrequency 行为。
+    - 如果上一级队列中已经有自动释放池的策略，它会继续沿用这个策略。
+    - 如果没有特别配置，系统默认的 GCD 队列通常采用 workItem 策略。
+ .workItem:
+    - 每次执行一个任务时，系统会创建并自动销毁一个自动释放池。这个选项确保每个任务结束后，自动释放池会被清空，释放自动释放的对象。
+    - 这是处理大部分异步任务时的默认和推荐选择，因为它确保每个任务执行后及时释放不再使用的对象，避免内存累积。
+ .never:
+    - 当选择此选项时，GCD 不会自动创建或清理自动释放池。开发者需要手动管理内存中的自动释放对象（通常在某些高性能需求场景下）。
+    - 这意味着在没有显式的 @autoreleasepool 包围的情况下，任何 autorelease 对象将不会被释放，直到你明确调用自动释放池，或者程序结束。
+ */
+let autoreleaseQueue = DispatchQueue(label: "autoreleaseFrequency", autoreleaseFrequency: .workItem)
+autoreleaseQueue.async {
+    print("thread -> \(Thread.current)")
+}
 
 //MARK: - DispatchGroup
 //1.使用方法
@@ -233,13 +259,30 @@ gro.notify(queue: DispatchQueue.main, work: notiItem)
 //MARK: - DispatchQoS
 //DispatchQoS调度优先级：直译过来就是应用在任务上的服务质量或执行优先级，可以理解为任务的身份、等级。可以用来修饰DispatchWorkItem、DispatchQueue。
 /*
- DispatchQoS类型：
-    - userInteractive: 与用户交互相关的任务，要最重视，优先处理，保证界面最流畅
-    - userInitiated: 用户主动发起的任务，要比较重视
-    - default: 默认任务，正常处理即可
-    - utility: 用户没有主动关注的任务
-    - background: 不太重要的维护、清理等任务，空闲处理
-    - unspecified: 无标识，能处理则处理，不能处理也无所谓
+ DispatchQoS类型（优先级从高到低依次如下）：
+    - userInteractive: 最高优先级，表示任务需要立即执行来更新用户界面，通常是用户期望的即时反馈操作。例如，处理触摸事件、屏幕刷新或动画。
+    - userInitiated: 由用户发起并期望立即结果的任务。通常用于需要快速完成，但不直接影响 UI 响应的任务。
+    - default: 系统默认的优先级，没有明确分配特定优先级的任务将使用此QoS。
+    - utility: 用于长时间运行的任务，用户不需要立即结果。通常这些任务会消耗系统资源，耗时较长，系统会尽量减少它们的执行对性能的影响。
+    - background: 适用于用户无感知的任务，比如数据同步、备份、缓存清理等。
+    - unspecified: 未指定的QoS，表示无明确的优先级要求。
+ 
+ print("userInteractive:\(DispatchQoS.userInteractive.qosClass.rawValue)\n",
+       "userInitiated:\(DispatchQoS.userInitiated.qosClass.rawValue)\n",
+       "default:\(DispatchQoS.default.qosClass.rawValue)\n",
+       "utitly:\(DispatchQoS.utility.qosClass.rawValue)\n",
+       "background:\(DispatchQoS.background.qosClass.rawValue)\n",
+       "unspecified:\(DispatchQoS.unspecified.qosClass.rawValue)\n")
+
+ /*
+  打印结果：
+  userInteractive:qos_class_t(rawValue: 33)
+  userInitiated:qos_class_t(rawValue: 25)
+  default:qos_class_t(rawValue: 21)
+  utitly:qos_class_t(rawValue: 17)
+  background:qos_class_t(rawValue: 9)
+  unspecified:qos_class_t(rawValue: 0)
+  */
 */
 
 @available(iOS 8.0, *, *)
@@ -257,10 +300,11 @@ let qosItem2 = DispatchWorkItem(qos: .unspecified) {
 }
 
 let qosQueue = DispatchQueue(label: "DispatchQoS", attributes: .concurrent)
-qosQueue.async(execute: qosItem1)
-qosQueue.async(execute: qosItem2)
 
-//运行结果：item1执行完，item2才开始打印xxxx。for循环次数需要调大一些，否则效果不明显。
+qosQueue.async(execute: qosItem2)
+qosQueue.async(execute: qosItem1)
+
+//运行结果：并行队列 item1 的执行优先级高于 item2，item1将占用较多资源先行打印完成，item2占用较少资源后续打印完成
   
 let userQosQueue = DispatchQueue(label: "DispatchQoS.userInteractive", qos: .userInteractive, attributes: .concurrent)
 let unspecQosQueue = DispatchQueue(label: "DispatchQoS.unspecified", qos: .unspecified, attributes: .concurrent)
@@ -272,17 +316,47 @@ let unspecItem = DispatchWorkItem(block: {
     }
 })
 
-unspecQosQueue.async(execute: unspecItem)
-
 @available(iOS 8.0, *, *)
 let userItem = DispatchWorkItem(block: {
     for i in 0...9999{
         print("item1 -> \(i)  thread: \(Thread.current)")
     }
 })
-userQosQueue.async(execute: userItem)
 
-//运行结果：item1执行完，item2才开始打印xxxx。
-print("111")
+userQosQueue.async(execute: userItem)
+unspecQosQueue.async(execute: unspecItem)
+
+//运行结果：不同优先级队列 userQosQueue 的执行优先级高于 unspecQosQueue，userQosQueue将占用较多资源执行任务，unspecQosQueue占用较少资源执行任务
+
+//MARK: - target
+let parentQueue = DispatchQueue(label: "com.example.parentQueue")
+let childQueue1 = DispatchQueue(label: "com.example.childQueue1", attributes: .concurrent, target: parentQueue)
+let childQueue2 = DispatchQueue(label: "com.example.childQueue2", attributes: .concurrent, target: parentQueue)
+
+childQueue1.async {
+    print("Task from childQueue1")
+}
+
+childQueue2.async {
+    print("Task from childQueue2")
+    sleep(3)
+}
+
+parentQueue.async {
+    print("Task from parentQueue")
+}
+/*
+ 1、parentQueue为串行队列
+ 结果:
+ Task from childQueue1
+ Task from childQueue2
+ Task from parentQueue（三秒后打印）
+ 
+ 2、parentQueue为并行队列
+ 结果：
+ 打印顺序不定
+ 
+ 总结：childQueue提交的任务最终均会被提交至parentQueue并按parentQueue的规则执行任务。
+ */
 
 //: [Next](@next)
