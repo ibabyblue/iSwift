@@ -272,7 +272,7 @@ fn(obj: ScarletWitch())
 //MARK: - CaseIterable
 //可迭代协议
 enum Season : CaseIterable {
-    case spring, smmer, autumn, winter
+    case spring, summer, autumn, winter
 }
 
 let seasons = Season.allCases
