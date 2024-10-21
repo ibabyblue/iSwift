@@ -297,7 +297,7 @@ extension Stack : Equatable where E : Equatable {
 
 /*
  Self和self的区别:
- - Self:在类型上下文中，表示当前类型，通常用于协议和泛型扩展中，表示具体的符合类型。
+ - Self:在类型上下文中，表示当前类型，通常用于协议和泛型扩展中，表示具体的符号类型。
  - self:在实例上下文中，表示当前实例。
  */
 
