@@ -116,7 +116,7 @@ extension Point {
     
 //    //==运算符重载
 //    static func ==(lhs: Point, rhs: Point) -> Bool {
-//        (lhs.x == rhs.x) || (lhs.y == rhs.y)
+//        (lhs.x == rhs.x) && (lhs.y == rhs.y)
 //    }
 }
 
@@ -127,7 +127,7 @@ p12 != p13
 
 //MARK: - Equatable协议
 /*
- Equatable:遵守Equatable协议，默认重载 != 运算符，但是自定义 == 运算符不会重载 != 运算符。
+ Equatable:遵守Equatable协议，默认重载 != 运算符，但是自定义 == 运算符后，不会重载 != 运算符。
  */
 extension Point : Equatable {
     static func == (lhs: Self, rhs: Self) -> Bool {
