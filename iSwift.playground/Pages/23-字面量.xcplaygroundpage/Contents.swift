@@ -61,6 +61,20 @@ extension Int : ExpressibleByBooleanLiteral {
     }
 }
 
+/*
+ - 标准库类型（如 Int）：由于默认是 public 访问级别，扩展时必须显式声明 public 访问级别以符合标准库的访问规则。
+ - 自定义类型（如 tStruct）：在同一模块中默认是 internal，所以不需要显式声明 public。在定义tStruct时显式声明 public，则在扩展时也必须要显式声明 public。
+ */
+//struct tStruct {
+//    
+//}
+//
+//extension tStruct: ExpressibleByBooleanLiteral {
+//    init(booleanLiteral value: BooleanLiteralType) {
+//        
+//    }
+//}
+
 var num: Int = true
 print(num)
 
