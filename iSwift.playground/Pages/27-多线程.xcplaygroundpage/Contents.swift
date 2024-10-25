@@ -198,7 +198,7 @@ autoreleaseQueue.async {
 }
 
 //MARK: - DispatchGroup
-//1.使用方法
+//1.1 使用方法1
 let group = DispatchGroup()
 let queue = DispatchQueue(label: "com.ibabyblue", attributes: .concurrent)
 
@@ -222,6 +222,28 @@ group.notify(queue: DispatchQueue.main) {
 //阻塞当前线程，直到上述group.notify方法被调用，释放当前线程，"wait 结束" 将在 "item1 and item2 done -> xxx" 之前打印
 group.wait()
 print("wait 结束")
+
+////1.2 使用方法2
+//let workQueue = DispatchQueue.global()
+//let workGroup = DispatchGroup()
+//    
+//workGroup.enter()
+//workQueue.async {
+//    Thread.sleep(forTimeInterval: 1)
+//    print("A action")
+//    workGroup.leave()
+//}
+//    
+//workGroup.enter()
+//workQueue.async {
+//    Thread.sleep(forTimeInterval: 2)
+//    print("B action")
+//    workGroup.leave()
+//}
+//    
+//workGroup.notify(queue: workQueue) {
+//    print("A and B done!")
+//}
 
 //2.挂起、恢复
 let gro = DispatchGroup()
@@ -358,5 +380,24 @@ parentQueue.async {
  
  总结：childQueue提交的任务最终均会被提交至parentQueue并按parentQueue的规则执行任务。
  */
+
+
+//MARK: - DispatchSource
+var seconds = 5
+let timer: DispatchSourceTimer = DispatchSource.makeTimerSource(flags: [], queue: DispatchQueue.global())
+timer.schedule(deadline: .now(), repeating: 1)
+timer.setEventHandler(handler: DispatchWorkItem(block: {
+    seconds -= 1
+    if seconds < 0 {
+        timer.cancel()
+    } else {
+        print(seconds)
+    }
+}))
+timer.resume()
+timer.setCancelHandler(handler: DispatchWorkItem(block: {
+    //调用timer.cancel()之后，会调用此CancelHandler
+    print("---cleaning up resources");
+}))
 
 //: [Next](@next)
