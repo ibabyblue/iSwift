@@ -17,7 +17,7 @@ class Person {
 }
 
 var person: Person? = Person()
-var age1 = person!.age() // Int
+var age1 = person!.age() // Int ，如果person为nil使用!强制解包会崩溃
 var age2 = person?.age() // Int?
 var name = person?.name // String?
 var index = person?[6] // Int?
