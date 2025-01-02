@@ -163,7 +163,7 @@ a.numA
 //
 //    // 没有自定义初始化器，编译错误
 //}
-////!!!: 编译错误：Class 'MyClass' has no initializers
+//!!!: 编译错误：Class 'MyClass' has no initializers
 //
 ////情况 3：定义了自定义初始化器
 //class MyClass {
