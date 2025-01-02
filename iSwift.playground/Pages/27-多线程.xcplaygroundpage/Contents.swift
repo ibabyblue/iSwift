@@ -167,7 +167,7 @@ serialQueue.async(execute: item1)
 serialQueue.async(execute: item2)
 
 //队列-自定义并行队列
-let concurrentQueue = DispatchQueue(label: "concurrent", attributes: .concurrent)
+let concurrentQueue = DispatchQueue(label: "Concurrent", attributes: .concurrent)
 concurrentQueue.async(execute: item1)
 concurrentQueue.async(execute: item2)
 
