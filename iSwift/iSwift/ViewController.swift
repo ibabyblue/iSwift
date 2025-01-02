@@ -47,16 +47,21 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         let x = X(z: 0)
+//        //SwiftUI -> 文本
+//        let iText = IText()
+//        let hostVc = UIHostingController(rootView: iText)
         
-        let iText = IText()
-        let hostVc = UIHostingController(rootView: iText)
+        //空页面
+        let eView = IEmpty()
+        let hostVc = UIHostingController(rootView: eView)
         
         self.addChild(hostVc)
         self.view.addSubview(hostVc.view)
         hostVc.didMove(toParent: self)
-        
         hostVc.view.frame = self.view.frame;
         
+        //RxSwiftDemo
+        let idemorxs: IDemoForRxSwift = IDemoForRxSwift()
     }
     
 }
