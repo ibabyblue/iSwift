@@ -313,7 +313,7 @@ d.run3() // 输出：Dog run3
 
 //MARK: - dynamic
 //被 @objc、dynamic修饰的内容会具有动态性，比如调用方法会走runtime那一套流程
-//Swift5中不推荐单独使用dynamic，不会隐式添加 @ojbc，会报错，推荐显示添加形式： @objc dynamic
+//Swift5中不推荐单独使用dynamic，不会隐式添加 @objc，推荐显示添加形式： @objc dynamic
 class Cat: NSObject {
     @objc dynamic func test1() { }
     func test2() { }
@@ -327,6 +327,15 @@ c.test2() //虚表
  Swift支持KVC、KVO的条件：
  - 属性所在的类、监听器最终继承自NSObject(因为OC的KVC/KVO走的是runtime，而使用runtime必然会用isa，isa又是NSObject的)
  - @objc dynamic 修饰的属性
+ 
+ 分析"@objc"和"@objc dynamic"的区别：
+ 一、KVO监听：
+    1、"@objc dynamic" KVO正常。
+    2、"dynamic" KVO崩溃。
+    3、"@objc" KVO异常，x.y = z形式的赋值，是无法监听y的改变的（并非objc_msgSend），只有x.setValue(z, forKey: "y")可以监听到，因为setValue方法本身就是NSObject的方法.
+ 二、未监听
+    1、"dynamic"修饰变量但是并未监听，调用方式还是虚表。
+    2、"@objc"或者"@objc dynamic"调用方式为objc_msgSend。
  */
 
 //示例代码一:
