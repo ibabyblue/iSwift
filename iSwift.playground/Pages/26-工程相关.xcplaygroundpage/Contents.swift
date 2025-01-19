@@ -336,6 +336,8 @@ c.test2() //虚表
  二、未监听
     1、"@objc"或者"dynamic"修饰变量，调用方式还是虚表。
     2、"@objc dynamic"调用方式为消息转发。
+ 
+ !!!: 将swift代码转为SIL（中间码）swiftc -emit-silgen -O xxx.swift
  */
 
 //示例代码一:
