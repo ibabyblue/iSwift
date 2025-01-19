@@ -319,7 +319,7 @@ class Cat: NSObject {
     func test2() { }
 }
 var c = Cat()
-c.test1() //消息转发
+c.test1() //消息转发,如果单独使用"@objc"依然是使用虚表。
 c.test2() //虚表
 
 //MARK: - KVC、KVO
@@ -334,8 +334,8 @@ c.test2() //虚表
     2、"dynamic" KVO崩溃。
     3、"@objc" KVO异常，x.y = z形式的赋值，是无法监听y的改变的（并非objc_msgSend），只有x.setValue(z, forKey: "y")可以监听到，因为setValue方法本身就是NSObject的方法.
  二、未监听
-    1、"dynamic"修饰变量，调用方式还是虚表。
-    2、"@objc"或者"@objc dynamic"调用方式为消息转发。
+    1、"@objc"或者"dynamic"修饰变量，调用方式还是虚表。
+    2、"@objc dynamic"调用方式为消息转发。
  */
 
 //示例代码一:
