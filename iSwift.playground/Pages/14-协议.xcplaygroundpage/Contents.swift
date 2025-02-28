@@ -43,7 +43,7 @@ class Foo: FooProtocol {
 }
 
 let f = Foo()
-f.foo() //Person 中并未实现此协议方法，故协议可选择实现
+f.foo() //Foo 中并未实现此协议方法，故协议可选择实现
 f.foo(age: 18)
 f.foo(name: "jack")
 
