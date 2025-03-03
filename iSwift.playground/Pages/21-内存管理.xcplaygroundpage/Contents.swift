@@ -453,7 +453,7 @@ func test(value: inout Int) {
  func leakyDispatchQueue() {
      let workItem = DispatchWorkItem { self.view.backgroundColor = .red }
      DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: workItem)
-     self. workItem = workItem
+     self.workItem = workItem
  }
  
  //7、如果我们立即执行闭包而不存储它，就不需要[weak self]
@@ -539,7 +539,7 @@ func test(value: inout Int) {
  }
  
  //13、直接将闭包函数传递给closure属性是很方便的，但会导致控制器内存泄漏！
- *原因：self被闭包隐式捕获(在swift中,如UIViewController的viewDidLoad中,可以直接修改view.backgroundColor,而不需要self.view.backgroundColor)，self拥有拥有printingButton，从而创建一个引用循环
+ *原因：self被闭包隐式捕获(在swift中,如UIViewController的viewDidLoad中,可以直接修改view.backgroundColor,而不需要self.view.backgroundColor)，self拥有printingButton，从而创建一个引用循环
  func setupLeakyButton() {
      printingButton?.closure = printer
  }
