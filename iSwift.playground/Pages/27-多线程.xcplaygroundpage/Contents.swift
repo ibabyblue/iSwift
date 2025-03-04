@@ -326,7 +326,7 @@ let qosQueue = DispatchQueue(label: "DispatchQoS", attributes: .concurrent)
 qosQueue.async(execute: qosItem2)
 qosQueue.async(execute: qosItem1)
 
-//运行结果：并行队列 item1 的执行优先级高于 item2，item1将占用较多资源先行打印完成，item2占用较少资源后续打印完成
+//运行结果：并行队列 qosItem1 的执行优先级高于 qosItem2，qosItem1将占用较多资源先行打印完成，qosItem2占用较少资源后续打印完成
   
 let userQosQueue = DispatchQueue(label: "DispatchQoS.userInteractive", qos: .userInteractive, attributes: .concurrent)
 let unspecQosQueue = DispatchQueue(label: "DispatchQoS.unspecified", qos: .unspecified, attributes: .concurrent)
