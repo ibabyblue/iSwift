@@ -98,7 +98,7 @@ var greeting = "Hello, playground"
  //泛型协议的本质,约束类型
  protocol Genertor{
     associatedtype AbstractType
-    func.generate()->AbstractType
+    func generate()->AbstractType
  }
  struct InGenertor:Genertor{
     typealias AbstractType = Int
@@ -166,5 +166,11 @@ var greeting = "Hello, playground"
  - 构造函数注入：通过初始化init()提供依赖       
  - 属性注入：通过属性（或 setter）提供依赖
  - 方法注入，将依赖项作为方法参数传递
+ */
+
+//MARK: 进程和线程的区别
+/*
+ 进程：进程是操作系统中进行资源分配的基本单位
+ 线程：CPU执行任务的最小单元
  */
 //: [Next](@next)
