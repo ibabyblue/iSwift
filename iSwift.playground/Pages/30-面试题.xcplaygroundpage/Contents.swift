@@ -15,18 +15,18 @@ var greeting = "Hello, playground"
  1、Struct是值类型、Class是引用类型
  */
 
-//MARK: 3、Swift中函数派发机制？
-/*
- 1、直接派发：函数地址直接调用
- 2、函数表派发：虚函数表
- 3、消息机制派发：就是消息发送流程
- */
-
-//MARK: 4、swift为什么推荐结构体而不是class？
+//MARK: 3、swift为什么推荐结构体而不是class？
 /*
  1、性能优化栈上内存分配和释放速度快，无需管理引用计数。
  2、写时复制优化
  3、没有继承和多态的开销
+ */
+
+//MARK: 4、Swift中函数派发机制？
+/*
+ 1、直接派发：函数地址直接调用
+ 2、函数表派发：虚函数表
+ 3、消息机制派发：就是消息发送流程
  */
 
 //MARK: 5、高阶函数是什么
@@ -71,6 +71,23 @@ var greeting = "Hello, playground"
 
 //MARK: 9、协议与泛型、协议弊端？
 /*
+ - 泛型可以将类型参数化，提高代码复用率，减少代码量。
+ - T 和 Any 的区别？ Any 类型会避开类型的检查
+ //输⼊输出类型⼀致
+ func add<T>( input: T) "-> T {
+     "//""...
+     return input;
+ }
+
+ //输⼊输出类型会不⼀致
+ func anyAdd(* input: Any) "-> Any {
+     "//""...
+     return input;
+ }
+ 
+ - 协议：大部分情况下，通过查表动态派发
+ - 泛型：大部分情况下，优化为直接派发，效率更高
+ 
  1、swift支持非泛型协议存储，但是有一定局限性，如下所示，mm不能调用x属性。
  protocol Drawable{
      func draw()
@@ -168,9 +185,195 @@ var greeting = "Hello, playground"
  - 方法注入，将依赖项作为方法参数传递
  */
 
-//MARK: 进程和线程的区别
+//MARK: 11、为什么选择Swift而不是Objective-C
 /*
- 进程：进程是操作系统中进行资源分配的基本单位
- 线程：CPU执行任务的最小单元
+- 性能效率
+- 安全性
+- 简洁性
+*/
+
+//MARK: 12、Swift ⼤事记
+/*
+ - ABI 稳定 Swift5 2019发布，ABI稳定，不会过⼤的增加包体积了；
+ - SwiftUI、Combine、Concurrency（都开始于 iOS 13+）
+ */
+
+//MARK: 13、HashTable 与 Dictionary、Set的不同
+/*
+ - Dictionary：由于每个提供的值都与一个键相关联，因此还可以在O(1)（常数时间）内执行必要的数据插入、查找和检索。
+ - HashTable：也支持键值对，但它的键是通过使用称为哈希算法的附加函数以编程方式生成的，因此它们通常不与数据结构一起存储。这些特性使哈希表的执行时间复杂度为 O(1)常数时间，同时占用最小的空间。
+
+ - 使用协议实现Hash算法
+ protocol Keyable {
+        
+     var keystring: String {get}
+    
+     //note: in this case hashValue operates as a function
+     func hashValue(for key: String!, using buckets: Array<T>) -> Int
+ }
+     
+ extension Keyable {
+         
+     //compute item hash
+     func hashValue<T>(for key: String!, using buckets: Array<T>) -> Int {
+                 
+         var remainder: Int = 0
+         var divisor: Int = 0
+         
+         //trivial case
+         guard key != nil else {
+             return -1
+         }
+         
+         for item in key.unicodeScalars {
+         divisor += Int(item.value)
+         }
+         
+         remainder = divisor % buckets.count
+         return remainder
+      }
+ }
+ */
+
+//MARK: 14、some（Opaque type：不透明类型） 和 any
+/*
+- any：更像是一个“盒子”，如果需要知道具体是什么类型，需要先把盒子打开。因此编译期间并不知道具体是什么，需要运行时才知道。
+- some：是一个存在的类型，没有外层的“盒子”，编译期间就已经确定了类型。
+
+protocol MyProtocol {}
+class MyC: MyProtocol {}
+class MyC1: MyProtocol {}
+
+var arr: [any MyProtocol] = [
+    MyC(),
+    MyC1(),
+]
+
+var arr1: [some MyProtocol] = [
+    MyC(),
+    MyC1(),
+]
+
+arr：元素的类型为 any MyProtocol，编译器不会检查里边装的到底是什么类型，对编译器来说，只要是“盒子”就行了，因此能够顺利编译通过。
+arr1：元素的类型为 some MyProtocol，里面既有 MyC 类型，又有 MyC1，对于编译器来说是有冲突的，因此编译会报错。
+*/
+
+//MARK: 15、Opaque Type并不能完全替换 Generic
+/*
+- 泛型容器，比如一个可以储存任何类型的数组。
+*/
+
+//MARK: 16、Swift中的Map、FlatMap 和 CompactMap 的区别是什么？
+/*
+ - FlatMap和CompactMap用于转换和过滤可选项和集合（均返回新数组，不修改原数组）
+    - FlatMap：平铺展开，例如：将二维数组展开为一维数组
+        - 例子：
+        let nestedArray = [[1, 2, 3], [4, 5, 6]]
+        let flattenedArray = nestedArray.flatMap { $0 }
+        print(flattenedArray) // Output: [1, 2, 3, 4, 5, 6]
+    - CompactMap：用于转换序列元素，同时解包可选值并移除 nil 结果。
+        - 例子：
+        let numbers = ["1", "2", "three", "4"]
+        let mappedNumbers = numbers.compactMap { Int($0) }
+        print(mappedNumbers) // Output: [1, 2, 4]
+
+ !!!: Combine 在iOS17之后将逐步废弃，新引入Observation框架，意味着响应式将消失
+- Combine：响应式框架 （发布者、订阅者、操作符）
+import Combine
+
+// Create a publisher
+let numbersPublisher = [1, 2, 3, 4, 5].publisher
+
+// map
+numbersPublisher
+    .map { $0 * 10 }
+    .sink { print($0) }  // Output: 10, 20, 30, 40, 50
+
+// flatMap
+let nestedPublisher = [[1, 2, 3], [4, 5, 6], [7, 8, 9]].publisher
+nestedPublisher
+    .flatMap { $0.publisher }
+    .sink { print($0) }  // Output: 1, 2, 3, 4, 5, 6, 7, 8, 9
+
+// compactMap
+let publisherWithNil = [1, nil, 3, nil, 5].publisher
+publisherWithNil
+    .compactMap { $0 }
+    .sink { print($0) }  // Output: 1, 3, 5
+
+map、filter、reduce 的时间复杂度：O(n)
+*/
+
+//MARK: 17、闭包以及闭包捕获
+/*
+ - 闭包是⼀个捕获了全局上下⽂的常量或者变量的函数
+ - 懒捕获：Lazy Capture（不使用捕获列表：[x, y]）,闭包内外的变量是同一个，修改其中一个，另外一个也改变
+ - 早捕获：Eager Capture（使用了捕获列表：[x, y]）,闭包内外变量不是同一个，修改其中一个，另外一个不改变
+ */
+
+//MARK: 18、可选项绑定
+/*
+ 原来写法：
+ class AnimationController {
+     var animation: Animation?
+
+     func update() {
+         if let animation = animation {
+             // Perform updates
+             ...
+         }
+     }
+ }
+
+ Swift5.7新的可选解包语法：
+ class AnimationController {
+     var animation: Animation?
+
+     func update() {
+         if let animation {
+             // Perform updates
+             ...
+         }
+     }
+ }
+ */
+
+//MARK: 19、lazy底层实现原理
+/*
+ 在Lazy.h文件中可以找到
+ 1、创建了两个模版类：LazyValue 用来存储懒加载值，Lazy 用来创建懒加载全局对象。
+ 2、延迟初始化: LazyValue 在调用 get 方法时会先调用 Value.has_value() 方法检查是否初始化过，如果没有，则调用 Init() 来初始化对象。
+ 3、一次性赋值: 一旦 lazy 属性被初始化，其值就会被存储起来，后续的访问将直接返回该值，无需重新计算。
+ */
+
+//MARK: 20、PassthroughSubject 与 CurrentValueSubject
+/*
+ PassthroughSubject和CurrentValueSubject 都是Combine框架中的发布者对象，区别：
+ - PassthroughSubject 没有初始值，如果没有订阅者，事件值将被丢弃
+ - CurrentValueSubject 有初始值，新的订阅者在订阅时会收到此初始值，相当于保存一个值
+ */
+
+//MARK: 21、Swift的安全性
+/*
+ - 代码安全：
+    - let声明为常量，避免使用过程中修改。
+    - 强制异常处理
+ - 类型安全强制转换：
+    - 禁止隐式类型转换避免转换中带来的异常问题。
+    - 提供泛型和协议关联类型，可以编写出安全类型的代码
+    - KeyPath相⽐使用字符串提供属性名称和类型信息，可以利使用编译器检查。
+ - 内存安全
+    - 强制初始化，使用前必须初始化内存
+    - 通过编译器检查发现潜在的内存冲突问题
+    - 使用自动内存管理避免⼿动管理内存带来的各种内存问题
+    - 可选类型，有效避免空指针带来的异常问题
+ - 线程安全
+    - 使用值类型减少在多线程中遇到的数据竞争造成崩溃问题
+    - async/await - 提供异步函数使我们可以使用格式化的方式编写重复操作。避免基于闭包的异步方式带来的内存循环引用和⽆法抛出异常的问题
+    - Actor - 提供Actor模型多线程开发中进行避免数据共享时产生的数据竞争问题，同时避免在使用锁时带来的死锁等问题
+ - 快速
+    - 值类型 - 相⽐类不需要额外的堆内存分配/释放和更少的内存消耗
+    - 静态派发 - 效率更高
+    - 泛型特化/写入时复制等优化提提高运行性能
  */
 //: [Next](@next)

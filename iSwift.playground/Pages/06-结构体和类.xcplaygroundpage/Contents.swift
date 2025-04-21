@@ -101,6 +101,8 @@ class Size {
     }
 }
 
+let aa : (Size, Size) = (Size(width: 1, height: 1), Size(width: 1, height: 1));
+
 var s1 = Size(width: 1, height: 1)
 var s2 = s1;
 
