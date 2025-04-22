@@ -73,6 +73,15 @@ var greeting = "Hello, playground"
 
 //MARK: 9、协议与泛型、协议弊端？
 /*
+ - 协议类型在内存中存储形式为:Existential Container - 5个word（64位时：5 * 8 = 40字节）；
+                            |-- 前三个词（24字节）：Value Buffer
+                            |
+                            |
+    Existential Container - |-- VWT（8字节）（Value Witness Table）
+                            |
+                            |
+                            |---PWT（8字节）（Protocol Witness Table）
+ 
  - 泛型可以将类型参数化，提高代码复用率，减少代码量。
  - T 和 Any 的区别？ Any 类型会避开类型的检查
  //输⼊输出类型⼀致
