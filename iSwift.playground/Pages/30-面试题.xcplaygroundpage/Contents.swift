@@ -196,8 +196,12 @@ var greeting = "Hello, playground"
 
 //MARK: 12、Swift ⼤事记
 /*
- - ABI 稳定 Swift5 2019发布，ABI稳定，不会过⼤的增加包体积了；
- - SwiftUI、Combine、Concurrency（都开始于 iOS 13+）
+ - 2014 - Swift1.0问世
+ - 2016 - Swift3 - Swift Package Manager
+ - 2017 - Swift4
+ - 2019 - ABI稳定（Swift5），系统标准库不再需要打包进可执行文件，体积不会变大，而是固话到手机操作系统内；
+        - SwiftUI、Combine（都开始于 iOS 13+）
+ - 2021 - Swift5.5 - Concurrency
  */
 
 //MARK: 13、HashTable 与 Dictionary、Set的不同
