@@ -29,6 +29,11 @@ var greeting = "Hello, playground"
  1、直接派发：函数地址直接调用
  2、函数表派发：虚函数表
  3、消息机制派发：就是消息发送流程
+                        直接派发                    函数表派发              消息派发
+ 值类型（struct）        AllMethods                    N/A                  N/A
+ 协议（protocol）        Extension           initial declaration           N/A
+ 类（class）      Extension（final/static）   initial declaration       @objc + dynamic
+ NSObject（子类） Extension（final/static）    initial declaration       @objc + dynamic
  */
 
 //MARK: 5、高阶函数是什么
