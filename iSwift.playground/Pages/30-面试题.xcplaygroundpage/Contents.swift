@@ -402,4 +402,10 @@ map、filter、reduce 的时间复杂度：O(n)
  - Swift中的 protocol 还可以对接口进行抽象,可以实现面向协议,从而大大提高编程效率
  - Swift中的 protocol 可以用于值类型,结构体,枚举;
  */
+
+//MARK: 23、Swift和OC中的自省?
+/*
+ OC:iskinOfClass:、isMemberOfClass:
+ Swift:使用 is 判断是否属于某一类型
+ */
 //: [Next](@next)
