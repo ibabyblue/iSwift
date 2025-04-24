@@ -8,6 +8,28 @@ var greeting = "Hello, playground"
 /*
  写时复制是一种优化内存技术，只用于值类型。将值类型赋值给另一个变量或者常量时，原始值会创建一个副本，副本和原始值是完全独立的，但不改变时这种复制开销是没有必要，写时复制就是为了优化这种场景，当一个不可变类型实例被赋值时，实际上只会增加一个指向原数据的引用计数。只有在进行修改时，才会对值进行复制。
  isKnownUniquelyReferenced:使用此函数判断是否开启写时复制。
+ 
+ !!!: 手动实现写时复制：
+ final class Ref<T> {
+   var val: T
+   init(_ v: T) { val = v }
+ }
+
+ struct Box<T> {
+   var ref: Ref<T>
+   init(_ x: T) { ref = Ref(x) }
+
+   var value: T {
+     get { return ref.val }
+     set {
+       if !isKnownUniquelyReferenced(&ref) {
+         ref = Ref(newValue)
+         return
+       }
+       ref.val = newValue
+     }
+   }
+ }
  */
 
 //MARK: 2、Swift中的Struct和Class的区别？
