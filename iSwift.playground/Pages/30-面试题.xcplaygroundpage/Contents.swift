@@ -35,7 +35,7 @@ var greeting = "Hello, playground"
 //MARK: 2、Swift中的Struct和Class的区别？
 /*
  1、Struct是值类型、Class是引用类型
- 2、Struct - 节省新能，不能被继承
+ 2、Struct - 节省性能，不能被继承
  3、struct ⾥的 class，即使 struct 复制了，它也是引⽤类型 ； 重要：例外，闭包⾥使⽤ Struct 是⼀份引⽤，除⾮明确的 copy ⼀份
  */
 
