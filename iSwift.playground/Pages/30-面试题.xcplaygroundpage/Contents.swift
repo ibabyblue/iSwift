@@ -117,7 +117,7 @@ var greeting = "Hello, playground"
  }
 
  //输⼊输出类型会不⼀致
- func anyAdd(* input: Any) "-> Any {
+ func anyAdd(* input: Any) -> Any {
      "//""...
      return input;
  }
@@ -154,7 +154,7 @@ var greeting = "Hello, playground"
     associatedtype AbstractType
     func generate()->AbstractType
  }
- struct InGenertor:Genertor{
+ struct IntGenertor:Genertor{
     typealias AbstractType = Int
     func generate() -> Int {
         return 0
@@ -166,8 +166,8 @@ var greeting = "Hello, playground"
         return "str"
     }
  }
- //下面代码报错，因为gen既可以是InGenertor也可以是StringGenertor，这在swift强类型语言中是不允许的
- let gen:Genertor=arc4random()%2 ==0 ? InGenertor(): StringGenertor()
+ //下面代码报错，因为gen既可以是IntGenertor也可以是StringGenertor，这在swift强类型语言中是不允许的
+ let gen : Genertor = arc4random() % 2 == 0 ? IntGenertor() : StringGenertor()
  
  3、类型擦除->借助中间层
  具体的解决方法是：
@@ -234,7 +234,7 @@ var greeting = "Hello, playground"
  - 2014 - Swift1.0问世
  - 2016 - Swift3 - Swift Package Manager
  - 2017 - Swift4
- - 2019 - ABI稳定（Swift5），系统标准库不再需要打包进可执行文件，体积不会变大，而是固话到手机操作系统内；
+ - 2019 - ABI稳定（Swift5），系统标准库不再需要打包进可执行文件，体积不会变大，而是固化到手机操作系统内；
         - SwiftUI、Combine（都开始于 iOS 13+）
  - 2021 - Swift5.5 - Concurrency
  */
@@ -267,7 +267,7 @@ var greeting = "Hello, playground"
          }
          
          for item in key.unicodeScalars {
-         divisor += Int(item.value)
+            divisor += Int(item.value)
          }
          
          remainder = divisor % buckets.count
@@ -418,7 +418,7 @@ map、filter、reduce 的时间复杂度：O(n)
  - 快速
     - 值类型 - 相⽐类不需要额外的堆内存分配/释放和更少的内存消耗
     - 静态派发 - 效率更高
-    - 泛型特化/写入时复制等优化提提高运行性能
+    - 泛型特化/写入时复制等优化提高运行性能
  */
 
 //MARK: 22、Swift中协议和ObjC中的协议有什么不同
@@ -429,7 +429,7 @@ map、filter、reduce 的时间复杂度：O(n)
 
 //MARK: 23、Swift和OC中的自省?
 /*
- OC:iskinOfClass:、isMemberOfClass:
+ OC:isKindOfClass:、isMemberOfClass:
  Swift:使用 is 判断是否属于某一类型
  */
 
