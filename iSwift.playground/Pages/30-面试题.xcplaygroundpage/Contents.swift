@@ -239,10 +239,15 @@ var greeting = "Hello, playground"
  - 2021 - Swift5.5 - Concurrency
  */
 
-//MARK: 13、HashTable 与 Dictionary、Set的不同
+//MARK: 13、NSHashTable 与 Dictionary、Set的不同
 /*
- - Dictionary：由于每个提供的值都与一个键相关联，因此还可以在O(1)（常数时间）内执行必要的数据插入、查找和检索。
- - HashTable：也支持键值对，但它的键是通过使用称为哈希算法的附加函数以编程方式生成的，因此它们通常不与数据结构一起存储。这些特性使哈希表的执行时间复杂度为 O(1)常数时间，同时占用最小的空间。
+ - Dictionary、Set：
+    - 值类型
+    - Dictionary的Key需符合Hashable协议，Value无特殊要求，强引用键和值
+    - Set元素需符合Hashable协议，强引用元素
+ - NSHashTable：
+    - 引用类型
+    - 可以指定元素强引用还是弱引用
 
  - 使用协议实现Hash算法
  protocol Keyable {
