@@ -23,6 +23,7 @@
 		4D85366D2DE209D6007B4C3B /* 01-Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D85366C2DE209D6007B4C3B /* 01-Observable.swift */; };
 		4D85366F2DE20E0D007B4C3B /* 02-Subscribe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D85366E2DE20E0D007B4C3B /* 02-Subscribe.swift */; };
 		4D8536712DE210E3007B4C3B /* 03-Observer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8536702DE210E3007B4C3B /* 03-Observer.swift */; };
+		4D8536732DE28EF2007B4C3B /* 04-Subjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8536722DE28EF2007B4C3B /* 04-Subjects.swift */; };
 		4DA25EAF2D0FD60A0076D2B1 /* Pods_iSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EA4FE444EFB613A820D8ADB /* Pods_iSwift.framework */; };
 		4DA25EB22D0FDEC60076D2B1 /* IEmpty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA25EB12D0FDEC60076D2B1 /* IEmpty.swift */; };
 		4DFD3ECB2D0FCD4700CEFD09 /* IRxSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DFD3ECA2D0FCD4700CEFD09 /* IRxSwift.swift */; };
@@ -68,6 +69,7 @@
 		4D85366C2DE209D6007B4C3B /* 01-Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "01-Observable.swift"; sourceTree = "<group>"; };
 		4D85366E2DE20E0D007B4C3B /* 02-Subscribe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "02-Subscribe.swift"; sourceTree = "<group>"; };
 		4D8536702DE210E3007B4C3B /* 03-Observer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "03-Observer.swift"; sourceTree = "<group>"; };
+		4D8536722DE28EF2007B4C3B /* 04-Subjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "04-Subjects.swift"; sourceTree = "<group>"; };
 		4DA25EB12D0FDEC60076D2B1 /* IEmpty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IEmpty.swift; sourceTree = "<group>"; };
 		4DFD3ECA2D0FCD4700CEFD09 /* IRxSwift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRxSwift.swift; sourceTree = "<group>"; };
 		4DFD3ECC2D0FD01000CEFD09 /* IDemoForRxSwift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDemoForRxSwift.swift; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 				4D85366C2DE209D6007B4C3B /* 01-Observable.swift */,
 				4D85366E2DE20E0D007B4C3B /* 02-Subscribe.swift */,
 				4D8536702DE210E3007B4C3B /* 03-Observer.swift */,
+				4D8536722DE28EF2007B4C3B /* 04-Subjects.swift */,
 			);
 			path = RxSwift;
 			sourceTree = "<group>";
@@ -392,6 +395,7 @@
 			files = (
 				4DFD3ECD2D0FD01000CEFD09 /* IDemoForRxSwift.swift in Sources */,
 				4D85366D2DE209D6007B4C3B /* 01-Observable.swift in Sources */,
+				4D8536732DE28EF2007B4C3B /* 04-Subjects.swift in Sources */,
 				4D1D99EA2BF6229500FD99B6 /* IText.swift in Sources */,
 				4DFD3ECB2D0FCD4700CEFD09 /* IRxSwift.swift in Sources */,
 				4D1D99F22BF6244700FD99B6 /* IObjectiveCBridging.m in Sources */,
