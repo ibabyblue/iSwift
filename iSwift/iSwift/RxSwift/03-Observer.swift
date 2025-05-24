@@ -112,7 +112,7 @@ import RxCocoa
  .bind(to: observer)
  .disposed(by: disposeBag)
  
- 其实 RxCocoa 在对许多 UI 控件进行扩展时，就利用 Binder 将控件属性变成观查者，比如 UIControl+Rx.swift 中的 isHidden 属性便是一个 observer ： 因此我们可以将序列直接绑定到它上面:
+ 其实 RxCocoa 在对许多 UI 控件进行扩展时，就利用 Binder 将控件属性变成观察者，比如 UIControl+Rx.swift 中的 isHidden 属性便是一个 observer ： 因此我们可以将序列直接绑定到它上面:
  
  let disposeBag = DisposeBag()
  let observable = Observable<Int>.interval(.seconds(1), scheduler: MainScheduler.instance)
