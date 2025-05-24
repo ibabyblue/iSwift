@@ -20,6 +20,7 @@
 		4D1D99F42BF6292100FD99B6 /* IProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1D99F32BF6292100FD99B6 /* IProperty.swift */; };
 		4D38B1CA2CB9204E002D2407 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 4D38B1C92CB9204E002D2407 /* Kingfisher */; };
 		4D38B1CD2CB92150002D2407 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 4D38B1CC2CB92150002D2407 /* Alamofire */; };
+		4D85366D2DE209D6007B4C3B /* 01-Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D85366C2DE209D6007B4C3B /* 01-Observable.swift */; };
 		4DA25EAF2D0FD60A0076D2B1 /* Pods_iSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EA4FE444EFB613A820D8ADB /* Pods_iSwift.framework */; };
 		4DA25EB22D0FDEC60076D2B1 /* IEmpty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA25EB12D0FDEC60076D2B1 /* IEmpty.swift */; };
 		4DFD3ECB2D0FCD4700CEFD09 /* IRxSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DFD3ECA2D0FCD4700CEFD09 /* IRxSwift.swift */; };
@@ -62,6 +63,7 @@
 		4D1D99F02BF6244700FD99B6 /* IObjectiveCBridging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IObjectiveCBridging.h; sourceTree = "<group>"; };
 		4D1D99F12BF6244700FD99B6 /* IObjectiveCBridging.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IObjectiveCBridging.m; sourceTree = "<group>"; };
 		4D1D99F32BF6292100FD99B6 /* IProperty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IProperty.swift; sourceTree = "<group>"; };
+		4D85366C2DE209D6007B4C3B /* 01-Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "01-Observable.swift"; sourceTree = "<group>"; };
 		4DA25EB12D0FDEC60076D2B1 /* IEmpty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IEmpty.swift; sourceTree = "<group>"; };
 		4DFD3ECA2D0FCD4700CEFD09 /* IRxSwift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRxSwift.swift; sourceTree = "<group>"; };
 		4DFD3ECC2D0FD01000CEFD09 /* IDemoForRxSwift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDemoForRxSwift.swift; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 			children = (
 				4DFD3ECA2D0FCD4700CEFD09 /* IRxSwift.swift */,
 				4DFD3ECC2D0FD01000CEFD09 /* IDemoForRxSwift.swift */,
+				4D85366C2DE209D6007B4C3B /* 01-Observable.swift */,
 			);
 			path = RxSwift;
 			sourceTree = "<group>";
@@ -382,6 +385,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4DFD3ECD2D0FD01000CEFD09 /* IDemoForRxSwift.swift in Sources */,
+				4D85366D2DE209D6007B4C3B /* 01-Observable.swift in Sources */,
 				4D1D99EA2BF6229500FD99B6 /* IText.swift in Sources */,
 				4DFD3ECB2D0FCD4700CEFD09 /* IRxSwift.swift in Sources */,
 				4D1D99F22BF6244700FD99B6 /* IObjectiveCBridging.m in Sources */,
