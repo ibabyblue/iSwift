@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-//MARK: Observable - 可被监听的序列
+//MARK: - Observable可被监听的序列
 /*
  Observable 可以用于描述元素异步产生的序列
 
@@ -17,7 +17,8 @@ import RxCocoa
  而且这些 Event 还可以携带数据，它的泛型 就是用来指定这个 Event 携带的数据的类型
  有了可观察序列，我们还需要有一个 Observer（订阅者）来订阅它，这样这个订阅者才能收到 Observable 不时发出的 Event。
  */
-//MARK: Event - 事件
+
+//MARK: - Event事件
 public enum Event<Element> {
     case next(Element)
     case error(Swift.Error)
@@ -29,7 +30,7 @@ public enum Event<Element> {
  completed - 序列的所有元素都已经成功产生，整个序列已经完成
  */
 
-//MARK: DisposeBag - 清除包
+//MARK: - DisposeBag清除包
 /*
  因为我们用的是 Swift ，所以我们更习惯于使用 ARC 来管理内存。那么我们能不能用 ARC 来管理订阅的生命周期了。答案是肯定了，你可以用 清除包（DisposeBag） 来实现这种订阅管理机制。当 清除包 被释放的时候，清除包 内部所有 可被清除的资源（Disposable） 都将被清除
 
@@ -71,7 +72,7 @@ func disposeMethod() {
 //测试create3
 //结束
 
-//MARK: just方法
+//MARK: - just方法
 /*
  该方法通过传入一个默认值来初始化。 just 下面样例我们显式地标注出了 observable 的类型为 Observable，
  即指定了这个 Observable 所发出的事件携带的数据类型必须是 Int 类型的。
@@ -108,7 +109,7 @@ func setUPJust(){
 //5
 //结束
 
-//MARK: from方法
+//MARK: - from方法
 /*
  将其他类型或者数据结构转换为 Observable
  当你在使用 Observable 时，如果能够直接将其他类型转换为 Observable，这将是非常省事的。from 操作符就提供了这种功能。
@@ -155,14 +156,14 @@ func setUPFrom() {
 //(key: "1", value: "one")
 //结束
 
-//MARK: repeatElement方法
+//MARK: - repeatElement方法
 /*
  该方法创建一个可以无限发出给定元素的 Event 的 Observable 序列（永不终止）。
  创建 Observable 重复的发出某个元素：
  let id = Observable.repeatElement(0)
  */
 
-//MARK: deferred
+//MARK: - deferred
 /*
  直到订阅发生，才创建 Observable，并且为每位订阅者创建全新的 Observable
 
@@ -213,7 +214,7 @@ func setUPDeferredt() {
 //true next(7)
 //true completed
 
-//MARK: Interval
+//MARK: - Interval
 /*
  interval 操作符将创建一个 Observable，它每隔一段设定的时间，发出一个索引数的元素(索引递增)。它将发出无数个元素。
  */
@@ -225,7 +226,7 @@ func intervalMethod() {
     }.disposed(by: disposeBag)
 }
 
-//MARK: timer
+//MARK: - timer
 func timerMethod() {
     let disposeBag = DisposeBag()
     let observable = Observable<Int>.timer(.seconds(5), scheduler: MainScheduler.instance)
@@ -235,13 +236,13 @@ func timerMethod() {
     }.disposed(by: disposeBag)
 }
 
-//MARK: empty
+//MARK: - empty
 /*
  该方法创建一个空内容的 Observable 序列。
  let _ = Observable<String>.empty()
  */
 
-//MARK: never
+//MARK: - never
 /*
  创建一个永远不会发出元素的 Observable never 操作符将创建一个 Observable，这个 Observable 不会产生任何事件。
  let id = Observable<Int>.never()

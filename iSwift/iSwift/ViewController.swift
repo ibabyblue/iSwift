@@ -46,6 +46,9 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+        //测试混编
+        ISwiftBridging().invokeFoo()
+        
         let x = X(z: 0)
 //        //SwiftUI -> 文本
 //        let iText = IText()
@@ -61,7 +64,7 @@ class ViewController: UIViewController {
         hostVc.view.frame = self.view.frame;
         
         //RxSwiftDemo
-        let idemorxs: IDemoForRxSwift = IDemoForRxSwift()
+//        let idemorxs: IDemoForRxSwift = IDemoForRxSwift()
     }
     
 }

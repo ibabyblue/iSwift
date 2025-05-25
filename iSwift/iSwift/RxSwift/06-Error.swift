@@ -83,7 +83,7 @@ import RxCocoa
  rxData
  .catchError { _ in cahcedData }
  .subscribe(onNext: { date in
-    print("获取数据成功: \(date.count)")
+        print("获取数据成功: \(date.count)")
  })
  .disposed(by: disposeBag)
  */

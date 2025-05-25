@@ -26,7 +26,7 @@ import RxCocoa
  有许多 UI 控件都存在这种特性，例如：switch的开关状态，segmentedControl的选中索引号，datePicker的选中日期等等。
  */
 
-//MARK: Subjects 基本介绍
+//MARK: - Subjects 基本介绍
 /*
  - Subjects 既是订阅者，也是 Observable：
     - 说它是订阅者，是因为它能够动态地接收新的值。
@@ -38,7 +38,7 @@ import RxCocoa
     - 他们之间最大的区别只是在于：当一个新的订阅者刚订阅它的时候，能不能收到 Subject 以前发出过的旧 Event，如果能的话又能收到多少个。
  */
 
-//MARK: AsyncSubject
+//MARK: - AsyncSubject
 /*
  AsyncSubject“将在源 Observable 产生完成事件后，发出最后一个元素（仅仅只有最后一个元素），如果源 Observable 没有发出任何元素，“只有一个完成事件。那 AsyncSubject 也只有一个完成事件。”
 
@@ -63,7 +63,7 @@ func asyncSubjectMethod() {
 //Subscription: 1 Event: next(🐹)
 //Subscription: 1 Event: completed
 
-//MARK: PublishSubject
+//MARK: - PublishSubject
 /*
  PublishSubject 的订阅者从他们开始订阅的时间点起，可以收到订阅后 Subject 发出的新 Event，而不会收到他们在订阅前已发出的 Event
  如果源 Observable 因为产生了一个 error 事件而中止， PublishSubject 就不会发出任何元素，而是将这个 error 事件发送出来。
@@ -99,7 +99,7 @@ func publishSubjectMethod() {
 //Subscription: 1 Event: next(🅱️)
 //Subscription: 2 Event: next(🅱️)
 
-//MARK: ReplaySubject
+//MARK: - ReplaySubject
 /*
  - ReplaySubject 在创建时候需要设置一个 bufferSize，表示它对于它发送过的 event 的缓存个数。
  - 比如一个 ReplaySubject 的 bufferSize 设置为 2，它发出了 3 个 .next 的 event，那么它会将后两个（最近的两个）event 给缓存起来。此时如果有一个 subscriber 订阅了这个 ReplaySubject，那么这个 subscriber 就会立即收到前面缓存的两个 .next 的 event。
@@ -152,7 +152,7 @@ func replaySubjectMethod() {
 //第3次订阅： next(444)
 //第3次订阅： completed
 
-//MARK: BehaviorSubject
+//MARK: - BehaviorSubject
 /*
  当观察者对 BehaviorSubject 进行订阅时，它会将源 Observable 中最新的元素发送出来（如果不存在最新的元素，就发出默认元素）。然后将随后产生的元素发送出来。
  如果源 Observable 因为产生了一个 error 事件而中止， BehaviorSubject 就不会发出任何元素，而是将这个 error 事件发送出来。

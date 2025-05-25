@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-//MARK: 观察者（Observer）
+//MARK: - 观察者（Observer）
 /*
  观察者（Observer）的作用就是监听事件，然后对这个事件做出响应。或者说任何响应事件的行为都是观察者
  比如：
@@ -17,7 +17,7 @@ import RxCocoa
  - 当我们请求一个远程的 json 数据后，将其打印出来。那么这个“打印 json 数据”就是观察者 Observer
  */
 
-//MARK: subscribe 方法中创建观察者
+//MARK: - subscribe 方法中创建观察者
 /*
  - 创建观察者最直接的方法就是在 Observable 的 subscribe 方法后面描述当事件发生时，需要如何做出响应。
  - 比如下面的样例，观察者就是由后面的 onNext，onError，onCompleted 这些闭包构建出来的。
@@ -33,7 +33,7 @@ import RxCocoa
  }).disposed(by: disposeBag)
  */
 
-//MARK: bind 方法中创建观察者
+//MARK: - bind 方法中创建观察者
 /*
  - 下面代码我们创建一个定时生成索引数的 Observable 序列，并将索引数不断显示在 label 标签上：
  let disposeBag = DisposeBag()
@@ -47,7 +47,7 @@ import RxCocoa
  .disposed(by: disposeBag)
  */
 
-//MARK: AnyObserver 创建观察者
+//MARK: - AnyObserver 创建观察者
 /*
  AnyObserver 可以用来描叙任意一种观察者。
  - 基础方法
@@ -90,7 +90,7 @@ import RxCocoa
  .disposed(by: disposeBag)
  */
 
-//MARK: Binder 创建观察者
+//MARK: - Binder 创建观察者
 /*
  - 相较于 AnyObserver 的大而全，Binder 更专注于特定的场景。Binder 主要有以下两个特征：
     - 不会处理错误事件
