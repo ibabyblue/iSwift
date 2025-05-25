@@ -49,7 +49,7 @@ class ViewController: UIViewController {
         //测试混编
         ISwiftBridging().invokeFoo()
         
-        let x = X(z: 0)
+        let _ = X(z: 0)
 //        //SwiftUI -> 文本
 //        let iText = IText()
 //        let hostVc = UIHostingController(rootView: iText)

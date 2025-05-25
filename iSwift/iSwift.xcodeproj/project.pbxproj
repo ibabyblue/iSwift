@@ -28,6 +28,7 @@
 		4D8536772DE294A8007B4C3B /* 06-Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8536762DE294A8007B4C3B /* 06-Error.swift */; };
 		4D8536792DE29676007B4C3B /* 07-Operator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8536782DE29676007B4C3B /* 07-Operator.swift */; };
 		4D8536E62DE2B879007B4C3B /* 08-Driver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8536E52DE2B879007B4C3B /* 08-Driver.swift */; };
+		4D8536E82DE2BE9B007B4C3B /* 09-UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8536E72DE2BE9B007B4C3B /* 09-UI.swift */; };
 		4DA25EAF2D0FD60A0076D2B1 /* Pods_iSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EA4FE444EFB613A820D8ADB /* Pods_iSwift.framework */; };
 		4DA25EB22D0FDEC60076D2B1 /* IEmpty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA25EB12D0FDEC60076D2B1 /* IEmpty.swift */; };
 		4DFD3ECB2D0FCD4700CEFD09 /* IRxSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DFD3ECA2D0FCD4700CEFD09 /* IRxSwift.swift */; };
@@ -78,6 +79,7 @@
 		4D8536762DE294A8007B4C3B /* 06-Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "06-Error.swift"; sourceTree = "<group>"; };
 		4D8536782DE29676007B4C3B /* 07-Operator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "07-Operator.swift"; sourceTree = "<group>"; };
 		4D8536E52DE2B879007B4C3B /* 08-Driver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "08-Driver.swift"; sourceTree = "<group>"; };
+		4D8536E72DE2BE9B007B4C3B /* 09-UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "09-UI.swift"; sourceTree = "<group>"; };
 		4DA25EB12D0FDEC60076D2B1 /* IEmpty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IEmpty.swift; sourceTree = "<group>"; };
 		4DFD3ECA2D0FCD4700CEFD09 /* IRxSwift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRxSwift.swift; sourceTree = "<group>"; };
 		4DFD3ECC2D0FD01000CEFD09 /* IDemoForRxSwift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDemoForRxSwift.swift; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 				4D8536762DE294A8007B4C3B /* 06-Error.swift */,
 				4D8536782DE29676007B4C3B /* 07-Operator.swift */,
 				4D8536E52DE2B879007B4C3B /* 08-Driver.swift */,
+				4D8536E72DE2BE9B007B4C3B /* 09-UI.swift */,
 			);
 			path = RxSwift;
 			sourceTree = "<group>";
@@ -423,6 +426,7 @@
 				4D8536712DE210E3007B4C3B /* 03-Observer.swift in Sources */,
 				4D85366F2DE20E0D007B4C3B /* 02-Subscribe.swift in Sources */,
 				4D1D99D82BF6225400FD99B6 /* SceneDelegate.swift in Sources */,
+				4D8536E82DE2BE9B007B4C3B /* 09-UI.swift in Sources */,
 				4D1D99EE2BF6242200FD99B6 /* ISwiftBridging.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
