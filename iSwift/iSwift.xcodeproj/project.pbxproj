@@ -29,6 +29,7 @@
 		4D8536792DE29676007B4C3B /* 07-Operator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8536782DE29676007B4C3B /* 07-Operator.swift */; };
 		4D8536E62DE2B879007B4C3B /* 08-Driver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8536E52DE2B879007B4C3B /* 08-Driver.swift */; };
 		4D8536E82DE2BE9B007B4C3B /* 09-UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8536E72DE2BE9B007B4C3B /* 09-UI.swift */; };
+		4D8536EA2DE2CC93007B4C3B /* 10-Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8536E92DE2CC93007B4C3B /* 10-Event.swift */; };
 		4DA25EAF2D0FD60A0076D2B1 /* Pods_iSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EA4FE444EFB613A820D8ADB /* Pods_iSwift.framework */; };
 		4DA25EB22D0FDEC60076D2B1 /* IEmpty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA25EB12D0FDEC60076D2B1 /* IEmpty.swift */; };
 		4DFD3ECB2D0FCD4700CEFD09 /* IRxSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DFD3ECA2D0FCD4700CEFD09 /* IRxSwift.swift */; };
@@ -80,6 +81,7 @@
 		4D8536782DE29676007B4C3B /* 07-Operator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "07-Operator.swift"; sourceTree = "<group>"; };
 		4D8536E52DE2B879007B4C3B /* 08-Driver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "08-Driver.swift"; sourceTree = "<group>"; };
 		4D8536E72DE2BE9B007B4C3B /* 09-UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "09-UI.swift"; sourceTree = "<group>"; };
+		4D8536E92DE2CC93007B4C3B /* 10-Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "10-Event.swift"; sourceTree = "<group>"; };
 		4DA25EB12D0FDEC60076D2B1 /* IEmpty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IEmpty.swift; sourceTree = "<group>"; };
 		4DFD3ECA2D0FCD4700CEFD09 /* IRxSwift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRxSwift.swift; sourceTree = "<group>"; };
 		4DFD3ECC2D0FD01000CEFD09 /* IDemoForRxSwift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDemoForRxSwift.swift; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 				4D8536782DE29676007B4C3B /* 07-Operator.swift */,
 				4D8536E52DE2B879007B4C3B /* 08-Driver.swift */,
 				4D8536E72DE2BE9B007B4C3B /* 09-UI.swift */,
+				4D8536E92DE2CC93007B4C3B /* 10-Event.swift */,
 			);
 			path = RxSwift;
 			sourceTree = "<group>";
@@ -413,6 +416,7 @@
 				4D8536792DE29676007B4C3B /* 07-Operator.swift in Sources */,
 				4D8536752DE292FA007B4C3B /* 05-Schedulers.swift in Sources */,
 				4D8536732DE28EF2007B4C3B /* 04-Subjects.swift in Sources */,
+				4D8536EA2DE2CC93007B4C3B /* 10-Event.swift in Sources */,
 				4D8536E62DE2B879007B4C3B /* 08-Driver.swift in Sources */,
 				4D1D99EA2BF6229500FD99B6 /* IText.swift in Sources */,
 				4DFD3ECB2D0FCD4700CEFD09 /* IRxSwift.swift in Sources */,
