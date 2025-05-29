@@ -13,9 +13,9 @@ import RxCocoa
 /*
  Observable 可以用于描述元素异步产生的序列
 
- Observable 这个类就是 Rx 框架的基础，我们可以称它为可观察序列。它的作用就是可以异步地产生一系列的 Event（事件），即一个 Observable 对象会随着时间推移不定期地发出 event(element : T) 这样一个东西。
+ Observable 这个类就是 Rx 框架的基础，可以称它为可观察序列。它的作用就是可以异步地产生一系列的 Event（事件），即一个 Observable 对象会随着时间推移不定期地发出 event(element : T) 这样一个东西。
  而且这些 Event 还可以携带数据，它的泛型 就是用来指定这个 Event 携带的数据的类型
- 有了可观察序列，我们还需要有一个 Observer（订阅者）来订阅它，这样这个订阅者才能收到 Observable 不时发出的 Event。
+ 有了可观察序列，还需要有一个 Observer（订阅者）来订阅它，这样这个订阅者才能收到 Observable 不时发出的 Event。
  */
 
 //MARK: - Event事件

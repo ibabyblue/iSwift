@@ -13,14 +13,14 @@ import RxCocoa
 /*
  观察者（Observer）的作用就是监听事件，然后对这个事件做出响应。或者说任何响应事件的行为都是观察者
  比如：
- - 当我们点击按钮，弹出一个提示框。那么这个“弹出一个提示框”就是观察者 Observer
- - 当我们请求一个远程的 json 数据后，将其打印出来。那么这个“打印 json 数据”就是观察者 Observer
+ - 当点击按钮，弹出一个提示框。那么这个“弹出一个提示框”就是观察者 Observer
+ - 当请求一个远程的 json 数据后，将其打印出来。那么这个“打印 json 数据”就是观察者 Observer
  */
 
 //MARK: - subscribe 方法中创建观察者
 /*
  - 创建观察者最直接的方法就是在 Observable 的 subscribe 方法后面描述当事件发生时，需要如何做出响应。
- - 比如下面的样例，观察者就是由后面的 onNext，onError，onCompleted 这些闭包构建出来的。
+ - 比如：下面的样例，观察者就是由后面的 onNext，onError，onCompleted 这些闭包构建出来的。
  let disposeBag = DisposeBag()
  let observable = Observable<Int>.interval(.seconds(1), scheduler: MainScheduler.instance)
  observable.subscribe(onNext: { [weak self] element in
@@ -35,7 +35,7 @@ import RxCocoa
 
 //MARK: - bind 方法中创建观察者
 /*
- - 下面代码我们创建一个定时生成索引数的 Observable 序列，并将索引数不断显示在 label 标签上：
+ - 下面代码创建一个定时生成索引数的 Observable 序列，并将索引数不断显示在 label 标签上：
  let disposeBag = DisposeBag()
  //Observable序列（每隔1秒钟发出一个索引数）
  let observable = Observable<Int>.interval(.seconds(1), scheduler: MainScheduler.instance)
@@ -49,7 +49,7 @@ import RxCocoa
 
 //MARK: - AnyObserver 创建观察者
 /*
- AnyObserver 可以用来描叙任意一种观察者。
+ AnyObserver 可以用来描述任意一种观察者。
  - 基础方法
  //观察者
  let disposeBag = DisposeBag()

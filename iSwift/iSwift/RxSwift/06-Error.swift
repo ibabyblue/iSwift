@@ -36,7 +36,7 @@ import RxCocoa
  以上的代码非常直接 retry(3) 就是当发生错误时，就进行重试操作，并且最多重试 3 次。
  
  ● retryWhen
- 如果我们需要在发生错误时，经过一段延时后重试，那可以这样实现
+ 如果需要在发生错误时，经过一段延时后重试，那可以这样实现
  // 请求 JSON 失败时，等待 5 秒后重试，
  let retryDelay: Double = 5  // 重试延时 5 秒
 
@@ -47,7 +47,7 @@ import RxCocoa
  .subscribe(...)
  .disposed(by: disposeBag)
  
- 这里我们需要用到 retryWhen 操作符，这个操作符主要描述应该在何时重试，并且通过闭包里面返回的 Observable 来控制重试的时机：
+ 这里需要用到 retryWhen 操作符，这个操作符主要描述应该在何时重试，并且通过闭包里面返回的 Observable 来控制重试的时机：
  .retryWhen { (rxError: Observable<Error>) -> Observable<Int> in
     ...
  }

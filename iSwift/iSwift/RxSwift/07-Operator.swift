@@ -29,8 +29,8 @@ import RxCocoa
  将observable的元素转化成其他的observable，然后将这些observable合并，
  flatMap 操作符将源 Observable 的每一个元素应用一个转换方法，将他们转换成 Observables。 然后将这些 Observables 的元素合并之后再发送出来
  map 在做转换的时候容易出现“升维”的情况。即转变之后，从一个序列变成了一个序列的序列。
- 而 flatMap 操作符会对源 Observable 的每一个元素应用一个转换方法，将他们转换成 Observables。 然后将这些 Observables 的元素合并之后再发送出来。即又将其 "拍扁"（降维）成一个 Observable 序列。
- 这个操作符是非常有用的，例如，当 Observable 的元素本生拥有其他的 Observable 时，你可以将所有子 Observables 的元素发送出来。
+ 而 flatMap 操作符会对源 Observable 的每一个元素应用一个转换方法，将它们转换成 Observables。 然后将这些 Observables 的元素合并之后再发送出来。即又将其 "拍扁"（降维）成一个 Observable 序列。
+ 这个操作符是非常有用的，例如，当 Observable 的元素本生拥有其他的 Observable 时，可以将所有子 Observables 的元素发送出来。
  
  let disposeBag = DisposeBag()
 
