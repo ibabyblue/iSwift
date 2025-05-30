@@ -309,22 +309,22 @@ import RxCocoa
  .disposed(by: disposeBag)
  
  source.onNext(1)
- //让源序列接收接收消息
+ //让源序列接收消息
  notifier.onNext("A")
  
  source.onNext(2)
- //让源序列接收接收消息
+ //让源序列接收消息
  notifier.onNext("B")
  notifier.onNext("C")
  source.onNext(3)
  source.onNext(4)
  
- //让源序列接收接收消息
+ //让源序列接收消息
  notifier.onNext("D")
  source.onNext(5)
  source.onNext(6)
  
- //让源序列接收接收消息
+ //让源序列接收消息
  notifier.onCompleted()
  
  打印结果:
