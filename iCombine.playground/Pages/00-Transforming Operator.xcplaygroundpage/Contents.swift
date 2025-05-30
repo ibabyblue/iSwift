@@ -13,8 +13,6 @@ func testSample(label : String, testBlock : () -> Void) {
 
 var cancell = Set<AnyCancellable>()
 
-//MARK: -
-//MARK: -- Transforming Operators
 //MARK: - collect
 //collect：一次性获取所有元素
 testSample(label: "01_collect") {

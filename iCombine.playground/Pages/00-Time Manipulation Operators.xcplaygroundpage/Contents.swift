@@ -16,8 +16,6 @@ func testSample(label : String, action: Bool, testBlock : () -> Void) {
 
 var cancell = Set<AnyCancellable>()
 
-//MARK: -
-//MARK: --- Time Manipulation Operators
 //MARK: - delay（延迟发布数据）
 /*
  ---1-2-3-4-5-6---  srcPublisher

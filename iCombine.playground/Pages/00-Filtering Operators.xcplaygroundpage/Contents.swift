@@ -11,8 +11,6 @@ func testSample(label : String, testBlock : () -> Void) {
 
 var cancell = Set<AnyCancellable>()
 
-//MARK: -
-//MARK: -- Filtering Operators
 //MARK: - filter
 testSample(label: "01_filter") {
     let arrPublisher = [1,2,3].publisher

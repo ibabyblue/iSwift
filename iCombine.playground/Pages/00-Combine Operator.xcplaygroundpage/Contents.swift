@@ -13,8 +13,6 @@ func testSample(label : String, testBlock : () -> Void) {
 
 var cancell = Set<AnyCancellable>()
 
-//MARK: -
-//MARK: --- Combine Operator
 //MARK: - prepend
 testSample(label: "01_prepend") {
     let arrPublisher = [1,2,3].publisher
