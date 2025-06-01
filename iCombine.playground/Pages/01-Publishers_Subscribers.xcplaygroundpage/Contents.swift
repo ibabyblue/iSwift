@@ -4,7 +4,7 @@ import Foundation
 import Combine
 import SwiftUI
 
-var greeting = "Combine - Publishers"
+var greeting = "Combine - Publishers_Subscribers"
 
 func testSample(label : String, testBlock : () -> Void) {
     print("-----------[\(label)]:start-----------");
