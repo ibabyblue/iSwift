@@ -3,7 +3,7 @@
 import Foundation
 import Combine
 
-var greeting = "Combine - Subscribers"
+var greeting = "Combine - Custom-Subscriber"
 
 func testSample(label : String, action : Bool, testBlock : () -> Void) {
     guard action else {
