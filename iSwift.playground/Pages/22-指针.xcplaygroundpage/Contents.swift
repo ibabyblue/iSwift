@@ -10,7 +10,7 @@ var greeting = "Hello, Pointer"
  • Swift中的指针类型：
  - UnsafePointer<Pointee> 类似于 const Pointee * (只读的泛型指针)
  - UnsafeMutablePointer<Pointee> 类似于 Pointee * (可读可写的泛型指针)
- - UnsafeBufferPointer<Pointee> 类似于 const Pointee * (只读的内存缓冲区指针) 集合指针类型
+ - UnsafeBufferPointer 类似于 const Pointee * (只读的内存缓冲区指针) 集合指针类型
  - UnsafeMutableBufferPointer 类似于 Pointee * (可读可写的内存缓冲区指针) 集合指针类型
  - UnsafeRawPointer 类似于 const void * (只读的原始类型指针)
  - UnsafeMutableRawPointer 类似于 void * (可读可写的原始类型指针)

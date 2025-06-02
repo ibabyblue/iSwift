@@ -106,19 +106,19 @@ var greeting = "Hello, playground"
     Existential Container - |-- VWT（8字节）（Value Witness Table）
                             |
                             |
-                            |---PWT（8字节）（Protocol Witness Table）
+                            |-- PWT（8字节）（Protocol Witness Table）
  
  - 泛型可以将类型参数化，提高代码复用率，减少代码量。
  - T 和 Any 的区别？ Any 类型会避开类型的检查
  //输⼊输出类型⼀致
- func add<T>( input: T) "-> T {
-     "//""...
+ func add<T>(input: T) -> T {
+     //...
      return input;
  }
 
  //输⼊输出类型会不⼀致
- func anyAdd(* input: Any) -> Any {
-     "//""...
+ func anyAdd(input: Any) -> Any {
+     //...
      return input;
  }
  
@@ -171,30 +171,43 @@ var greeting = "Hello, playground"
  
  3、类型擦除->借助中间层
  具体的解决方法是：
- - 定义一个中间层结构体，该结构体实现了协议的所有方法
- - 在中间层结构体实现的具体协议方法中，再转发给实现协议的抽象类型
+ - 定义一个中间层结构体
+ - 在中间层结构体实现的具体方法中，再转发给实现协议的抽象类型
  - 在中间层结构体的初始化过程中，实现协议的抽象类型，会被当做参数传入（依赖注入）
- protocol Printer{
-    associatedtype AbstractType
-    func test(_ parms: AbstractType)
+ protocol Printer {
+     associatedtype AbstractType
+     func test(_ parms : AbstractType)
  }
- struct AnyPrinter<T>: Printer {
-    //函数指针
-    private let _test:(T) -> ();
-    init<Base : Printer>(_base:Base) where Base.AbstkractType == T{
-        _test = base.test
-    func test(_parms:T){
-        _test(parms)
-    }
+ struct AnyPrinter<T> {
+     //函数指针
+     private let _test:(T) -> ();
+     
+     init<Base : Printer>(_ base : Base) where Base.AbstractType == T {
+         _test = base.test
+     }
+     
+     func test(_ parms : T) {
+         _test(parms)
+     }
  }
- struct TypeCPrinter<T>:Printer{
-    typealias AbstractType = T
-    func test(_parms: T) {
-        print(parms)
-    }
+ struct TypeCPrinter<T> : Printer {
+     typealias AbstractType = T
+     func test(_ parms: T) {
+         print(parms)
+     }
  }
- let p: AnyPrinter<String> = AnyPrinter(TypeCFPrinter())
- p.test("123")
+ //示例：String
+ let sPointer : AnyPrinter<String> = AnyPrinter(TypeCPrinter<String>())
+ sPointer.test("hello world")
+
+ //示例：Int
+ let iPointer = TypeCPrinter<Int>()
+ iPointer.test(123)
+ 
+ //示例：返回值，此时不能使用Printer作为返回值
+ //func test() -> AnyPrinter<Int> {
+ //    return AnyPrinter(TypeCPrinter<Int>())
+ //}
  */
 
 //MARK: 10、依赖注入
@@ -306,7 +319,7 @@ arr1：元素的类型为 some MyProtocol，里面既有 MyC 类型，又有 MyC
 
 //MARK: 15、Opaque Type并不能完全替换 Generic
 /*
-- 泛型容器，比如一个可以储存任何类型的数组。
+- Opaque Type 不能用于参数类型，可以作为返回值类型，泛型均可以
 */
 
 //MARK: 16、Swift中的Map、FlatMap 和 CompactMap 的区别是什么？
@@ -323,7 +336,7 @@ arr1：元素的类型为 some MyProtocol，里面既有 MyC 类型，又有 MyC
         let mappedNumbers = numbers.compactMap { Int($0) }
         print(mappedNumbers) // Output: [1, 2, 4]
 
- !!!: Combine 在iOS17之后将逐步废弃，新引入Observation框架，意味着响应式将消失
+ !!!: Combine
 - Combine：响应式框架 （发布者、订阅者、操作符）
 import Combine
 
