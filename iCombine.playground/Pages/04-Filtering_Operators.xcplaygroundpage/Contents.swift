@@ -58,6 +58,20 @@ testSample(label: "02_filter") {
 
 //MARK: - removeDuplicates
 testSample(label: "03_removeDuplicates") {
+    
+    struct Foo : Equatable {
+        var id : String
+        var age : Int
+        
+        //使用 removeDuplicates 去重，结构体对象需要重写 Equatable 协议
+        static func == (lhs: Self, rhs: Self) -> Bool {
+            lhs.id == rhs.id
+        }
+    }
+    
+//    //结构体对象去重
+//    let arrPublisher = [Foo(id: "1", age: 10), Foo(id: "1", age: 20)].publisher
+    
     let arrPublisher = [1,1,2,2,3].publisher
     arrPublisher
         .removeDuplicates()
