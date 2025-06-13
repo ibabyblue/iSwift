@@ -9,18 +9,18 @@ import Foundation
 
 //属性包装器
 @propertyWrapper
-struct Clamped {
-    private var value: Int
-    private let range: ClosedRange<Int>
+struct Clamped<T : Comparable> {
+    private var value: T
+    private let range: ClosedRange<T>
     
     //包装器的值 wrappedValue 是固定写法
-    var wrappedValue: Int {
+    var wrappedValue: T {
         get { value }
         set { value = min(max(newValue, range.lowerBound), range.upperBound) }
     }
     
     //初始化
-    init(wrappedValue: Int, range: ClosedRange<Int>) {
+    init(wrappedValue: T, range: ClosedRange<T>) {
         self.range = range
         self.value = min(max(wrappedValue, range.lowerBound), range.upperBound)
     }
@@ -28,11 +28,16 @@ struct Clamped {
 
 // 使用
 struct Settings {
-    @Clamped(range: 0...100) var volume: Int = 50
+//    @Clamped(range: 0...100) var volume: Int = 50
+    //等价于
+    @Clamped(range: 0...100)
+    var volume: Int = 50
 }
 
-func foo() {
-    var settings = Settings()
-    settings.volume = 101
-    print(settings.volume)
+struct IPropertyWrapper {
+    static func foo() {
+        var settings = Settings()
+        settings.volume = 101
+        print(settings.volume)
+    }
 }
